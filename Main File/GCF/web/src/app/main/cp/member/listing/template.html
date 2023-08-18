@@ -1,0 +1,111 @@
+<div class="content-cnt page-layout blank">
+
+   <div class="header p-24 h-80" fxFill fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="50">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text" >ព័ត៌មានសមាជិក</span>
+         </div>
+      </div>
+      <div fxFlex="30">
+         <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+               <mat-icon class="cursor-pointer" (click)="listing()">search</mat-icon>
+               <input [(ngModel)]="key" type="text" (keyup.enter)="listing()" placeholder="ស្វែងរកព័ត៌មានសមាជិក" fxFlex>
+            </div>
+           
+         </div>
+      </div>
+   </div>
+ 
+    <div class="content">
+        <!-- //[fxFlex.xs]="update-padding-tab" -->
+        <div class="tab-content p-24">
+          <!-- ================= Filter ================ -->
+          <section class="listing">
+             <div *ngIf=" isSearching ">
+                <mat-spinner style="margin:auto" diameter=" 50 "></mat-spinner>
+             </div>
+ 
+             <ng-container *ngIf=" data?.length > 0 && !isSearching">
+                <app-table [tableColumnInfo]="columnTableInfo" [dataSource]="data"></app-table>
+             </ng-container>
+ 
+             <ng-container *ngIf=" data?.length == 0 && !isSearching ">
+                <div fxLayout="column" fxLayoutAlign=" center" fxflex>
+                   <mat-icon role="img" class="mat-icon notranslate s-100 mb-16 select-message-icon hint-text material-icons mat-icon-no-color" aria-hidden="true">toc</mat-icon>
+                   <span class="select-message-text hint-text"><span>No Data</span></span>
+                </div>
+             </ng-container>
+ 
+          </section>
+          <!-- when load data -->
+          
+          <!-- when load data -->
+          <div fxLayout="row" fxLayoutAlign="center" *ngIf=" isSearching ">
+                <!-- <mat-spinner diameter=" 20"></mat-spinner> -->
+                <span *ngIf="!isLoadMore" class="p-100 load-text-color">កំពុងទាញទិន្នន័យ...</span>
+                <span *ngIf="isLoadMore" class="pb-8 load-text-color">កំពុងទាញទិន្នន័យបន្ថែម...</span>
+          </div>
+ 
+          <!-- after load data but no record -->
+          <div fxLayout="row" fxLayoutAlign="center" fxflex *ngIf=" isSearching && !data  ">
+             <mat-icon role="img"
+                class="mat-icon notranslate s-100 mb-16 select-message-icon hint-text material-icons mat-icon-no-color"
+                aria-hidden="true"> toc </mat-icon>
+             <span class="select-message-text hint-text"><span >No Data</span></span>
+          </div>
+          <div fxLayoutAlign="end end">
+            <tr *ngIf=" data?.length > 0 && !isSearching" style="align-content: flex-end">
+              <app-paginator [length]="total" [page]="page" [limit]="limit" (pageChanged)="onPageChanged($event)"></app-paginator>
+            </tr>
+          </div>
+       </div>
+    </div>
+    
+ </div>
+ 
+
+ 
+      <!-- ====================================================================================>> Table Column -->
+      <ng-template #colNumber let-element let-item let-index>
+        <div class="hover-pionter receipt-color ">
+          <b style="color: rgb(9, 0, 128);">{{ element?.user?.uid }}</b> 
+          <br />
+        </div>
+      </ng-template>
+      <ng-template #colRank let-element let-item let-index>
+         <div class="hover-pionter receipt-color">
+          <b>{{ element?.rank?.name }}</b>
+         </div>
+       </ng-template>
+      <ng-template #colInformation let-element let-item let-index>
+        <div class="hover-pionter receipt-color">
+          {{ element?.user.name }} |  {{ element?.user?.phone }} <br />
+         {{ element?.user?.email}}
+        </div>
+      </ng-template>
+      
+      <ng-template #colMajor let-element let-item let-index>
+        <div class="hover-pionter receipt-color">
+          {{ element?.referral?.rank?.name }} <br> 
+          {{ element?.referral?.user?.uid }}| {{ element?.referral?.user?.name }} <br> {{ element?.referral?.user?.phone }}
+
+        </div>
+      </ng-template>
+
+      <ng-template #colAction let-element let-item let-index>
+        <div class="hover-pionter receipt-color">
+         
+          <button
+              mat-icon-button
+              color="accent"
+              [routerLink]="['/cp/members/'+element?.id]"
+              matTooltip="មើល"
+              >
+              <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </div>
+      </ng-template>
+         

@@ -1,0 +1,10 @@
+---
+ - hosts: development
+   tasks:
+   - name: Clone a github repository
+     ansible.builtin.git:
+       repo: git@code.gitlab.camcyber.com:camcyber-pos-online-training/api.git
+       dest: /apps/backend/api
+       clone: yes
+       key_file: /root/.ssh/id_rsa
+       update: yes

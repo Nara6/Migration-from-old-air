@@ -1,0 +1,58 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SemaphoreExercise",
+            "request": "launch",
+            "mainClass": "SemaphoreExercise"
+        },
+        {
+            "type": "java",
+            "name": "Semaphore",
+            "request": "launch",
+            "mainClass": "Semaphore"
+        },
+        {
+            "type": "java",
+            "name": "SemaphoreExample",
+            "request": "launch",
+            "mainClass": "SemaphoreExample",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "CoffeeShopApplication",
+            "request": "launch",
+            "mainClass": "gic.itc.coffee_shop.CoffeeShopApplication"
+        },
+        {
+            "type": "java",
+            "name": "bookingticket",
+            "request": "launch",
+            "mainClass": "bookingticket"
+        },
+        {
+            "type": "java",
+            "name": "bankmachine",
+            "request": "launch",
+            "mainClass": "counter.bankmachine"
+        },
+        {
+            "type": "java",
+            "name": "SpringBootSecurityJwtApplication",
+            "request": "launch",
+            "mainClass": "com.bezkoder.springjwt.SpringBootSecurityJwtApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CoffeeShopApplication<coffee_shop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "gic.itc.coffee_shop.CoffeeShopApplication",
+            "projectName": "coffee_shop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=49661 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=coffee_shop"
+        }
+    ]
+}

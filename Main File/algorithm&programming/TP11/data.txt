@@ -1,0 +1,8 @@
+e20191298                 Nara           Male           nara@gmail.com            900      016838248
+e20191092                 Meow         Female           meow@gmail.com            800      098123332
+e20191033                 Chin           Male           chin@gmail.com            870      012344432
+e20191001                 Rose         Female           rose@gmail.com           1200      099233322
+e20191002                 Jiso         Female           jiso@gmail.com           1250      089222223
+e20191298                 Lisa         Female           lisa@gmail.com           9800      012999923
+e20191092                Kimsy         Female          kimsy@gmail.com            700      092333323
+e20191033               Nimith           Male         nimith@gmail.com            970     0982333321

@@ -1,0 +1,17 @@
+---
+# tasks file for nginx
+- name: create directory if they don't exist
+  file:
+    path: '/etc/nginx/conf.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: add config file
+  template:
+    src: 'templates/{{ item.name }}.conf.j2'
+    dest: '/etc/nginx/conf.d/{{ item.name }}.conf'
+    mode: 0755
+  with_items: 
+    - '{{ projects }}'

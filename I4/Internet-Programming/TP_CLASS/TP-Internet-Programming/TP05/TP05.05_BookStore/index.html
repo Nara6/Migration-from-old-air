@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body{
+        display: flex;
+        }
+        .add_book {
+            margin: 5px;
+            width: 20%;
+            border-radius: 5px;
+            background-color: rgb(204, 212, 218);
+            padding: 20px;
+        }
+        .add_book p{
+            margin: 0px;
+            margin-top: 10px;
+        }
+        .add_book button {
+            background: #b9bdba;
+            border-radius: 2px;
+            margin-top: 5px;
+            width: fit-content;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .list_book{
+            display: grid;
+            background-color: rgb(204, 212, 218);
+            width: 80%;
+            gap: 5px;
+            grid-template-columns: 25% 25% 25% 25%;
+            padding: 10px;
+        
+        }
+        .item{
+            background: white;
+            width: 95%;
+            margin: 5px 7px 5px 7px;
+            border-radius: 3px;
+        }
+        .item .button{
+            text-align: right;
+            margin: 5px;
+        }
+        .item .image{
+            text-align: center;
+        } 
+        .item .book_info{
+            text-align: left;
+            margin: 10px 20px;
+        }
+
+        /* dialog */
+        .dialogHeader{
+            font-size: 20px;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
+        dialog p{
+            margin: 0px;
+            padding: 0px;
+        }
+        dialog input{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body onload="listing();">
+    <div class="add_book">
+        <p>Name:</p>
+        <input type="text" id="name" placeholder="c programming">
+        <p>Catagory:</p>
+        <input type="text" id="category" placeholder="coding">    
+        <p>Price:</p>
+        <input type="text" id="price" placeholder="40000 riels"><br>
+        <button id="add" onclick="addBook();">Add</button>
+    </div>
+    <div class="list_book" id="list_book">
+    </div>
+    <dialog id="updateDialog">
+        <div class="dialogHeader">
+            Please input the update information 
+        </div>
+        <p>Name:</p>
+        <input type="text" id="nameD" placeholder="c programming">
+        <p>Catagory:</p>
+        <input type="text" id="categoryD" placeholder="coding">
+        <p>Price:</p>
+        <input type="text" id="priceD" placeholder="40000 riels"><br>
+        <button type="submit" id="submit">Submit</button>
+        <button id="hide">Close</button>
+    </dialog>
+    <script src="./script.js"></script>
+</body>
+
+</html>

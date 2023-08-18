@@ -1,0 +1,39 @@
+<div class="content-cnt page-layout blank">
+  <div class="header accent p-24 h-80" fxLayout="row" fxLayoutAlign="start center">
+
+    <div fxLayout="column" fxLayoutAlign="center start" fxFlex="50">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="secondary-text s-18">home</mat-icon>
+        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+        <span class="secondary-text">ព័ត៌មានសមាជិក</span>
+        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+        <span class="secondary-text">{{ data?.user?.name }}</span>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="content">
+    <div class="tab-content p-24">
+      <div *ngIf=" isLoading ">
+        <mat-spinner style="margin: auto" diameter=" 50 "></mat-spinner>
+      </div>
+      <mat-tab-group>
+        <mat-tab label="ទិដ្ឋភាពទូទៅ">
+          <ng-container *ngIf = "data">
+            <overview-member [data] = "data" [action] = " 'UPDATE' " [id]="data?.id" [id]="data"></overview-member>
+          </ng-container>            
+        </mat-tab>
+
+          <mat-tab label="ប្រតិបត្តិការ">
+            <view-academic  [data]="data">sooning</view-academic>
+          </mat-tab>
+          <mat-tab label="ការបង់ប្រាក់"> 
+            <view-invoice [data] = "data?.invoices">sooning</view-invoice> 
+          </mat-tab>
+      
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>

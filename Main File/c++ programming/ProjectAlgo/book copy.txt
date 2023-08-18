@@ -1,0 +1,5 @@
+1	meow	Life_of_Pi	Fiction	9	Yann_Martel	Jasmine	1/5/2003
+2	45533443	Harry_Potter	Adventure	25	J.K_Rowling	Rizz	30/5/2019
+3	67665554	Little_Women	Classic	14	Louisa_May_Alcott	Gupta	25/9/2018
+4	56775433	Vintage_Beloved	Classic	9	Toni_Morrison	Toni	8/6/2004
+5	12344332	Circe   Fantasy	12	Madeline_Miller John	10/4/2018

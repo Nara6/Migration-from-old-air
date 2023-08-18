@@ -1,0 +1,60 @@
+<ng-container *ngIf="template === 'delete'" [ngTemplateOutlet]="delete"></ng-container>
+<ng-container *ngIf="!template || template === 'confirm'" [ngTemplateOutlet]="confirm"></ng-container>
+<ng-container *ngIf="template === 'concern'" [ngTemplateOutlet]="concern"></ng-container>
+
+<ng-template #delete>
+    <h2 mat-dialog-title class="text-uppercase"> លុបទិន្នន័យ </h2>
+    <mat-dialog-content style="overflow: unset;">
+        <!-- <mat-dialog-actions align="end">
+            <button class="close" [mat-dialog-close]="false" mat-button>X</button>
+        </mat-dialog-actions> -->
+        <p>
+            {{ data?.message }}
+        </p>
+        <section class="example-section">
+            <mat-checkbox [(ngModel)]="agree" class="example-margin">យល់ព្រមលុប</mat-checkbox>
+        </section>
+    </mat-dialog-content>
+    <!-- <mat-dialog-actions align="end">
+        <button mat-button class="close-icon" [mat-dialog-close]="false" class="primary">បិទ</button>
+        <button mat-button mat-dialog-close="true" cdkFocusInitial class="warn" [disabled]="!agree">យល់ព្រម</button>
+        </mat-dialog-actions> -->
+</ng-template>
+
+<ng-template #confirm>
+    <mat-dialog-content style="overflow: unset;">
+        <!-- <mat-dialog-actions align="end">
+            <button class="close" [mat-dialog-close]="false" mat-button>X</button>
+        </mat-dialog-actions> -->
+        <p>
+            {{ data?.message }}
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button class="close-icon" [mat-dialog-close]="false" class="warn">បិទ</button>
+        <button mat-button mat-dialog-close="true" class="default">យល់ព្រម</button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #concern>
+    <mat-dialog-content style="overflow: unset;">
+        <!-- <mat-dialog-actions align="end">
+            <button class="close" [mat-dialog-close]="false" mat-button>X</button>
+        </mat-dialog-actions> -->
+        <ng-container *ngIf="concernName === 'paymentConcern'" [ngTemplateOutlet]="paymentConcern"></ng-container>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button class="close-icon" [mat-dialog-close]="false" class="warn">បិទ</button>
+        <button mat-raised-button color="accent" mat-dialog-close="true" > យល់ព្រម </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #paymentConcern>
+    <div class="concern">
+        <p><b>-សូមពិនិត្យព័ត៌មានអោយបានត្រឹមត្រូវ</b></p>
+        <p><b>-ក្រោយពេលធ្វើការ <span><button mat-raised-button color="accent" mat-dialog-close="true" > Submit </button>
+        </span> លោកអ្នកមិនអាចកែប្រែបានទេ</b></p>
+        <p><b>-ព័ត៌មានរបស់លោកអ្នកត្រូវប្រាកដថាត្រឹមត្រូវ</b></p>
+    </div>
+</ng-template>

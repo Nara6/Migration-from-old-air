@@ -1,0 +1,61 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+@import "assets/custom";
+//Import Responsive
+@import './app/shared/mat-table-responsive/mat-table-responsive.directive.scss';
+// import content
+@import './app/shared/scss/content-page.scss';
+//import button action style in table responsive
+@import './app/shared/scss/table-button-action.scss';
+//import dialog style
+@import './/app//shared//scss//dialog.scss';
+
+
+html, body { 
+    height: 100%; 
+    font-family: 'Siemreap', 'Roboto';
+}
+// body { 
+//     margin: 0; font-family: 'Battambang',Roboto, "RobotoNeue", sans-serif; 
+// }
+
+.fuse-navy-900 {
+    background-color: #0831a3  !important;
+    color: white !important;
+}
+.below-static{
+    background-color: #0831a3  !important;
+}
+body.theme-default .accent {
+    background-color: #0831a3 ;
+    color: white !important;
+}
+.fuse-navy-700 {
+    background-color: #f5f5f5 !important;
+    color: #060606 !important;
+}
+body.theme-default .accent {
+    background-color: #0831a3  !important;
+    color: white !important;
+}
+body .content-cnt .header{
+    background-color: white !important;
+}
+
+body.theme-default .accent .secondary-text{
+    color: #060606 !important;
+}
+.user-button .username{
+    color: white !important;
+}
+.my-container {
+    max-width: 1380px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    margin: auto;
+    padding: 24px;
+}

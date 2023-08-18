@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>លេខវិក្ក័យប័ត្រ <b style="color:green">#{{ data?.receipt_number }}</b></h2>
+<mat-dialog-content class="mat-typography" style="min-width:600px" >
+    <mat-divider></mat-divider>
+    <div>
+        <div fxLayout="row" class="pt-16 pb-16">
+            <div fxFlex="50" >
+                អ្នកគិតលុយ : {{ data?.cashier?.name }}<br>
+                អតិថិជនឈ្មោះ : {{ data?.customer?.name }}
+            </div>
+            <div fxFlex="50" >
+                កាលបរិច្ឆេទ : {{ data?.ordered_at | date:'medium' }}
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="pt-16 pb-16">
+        <div class="box box-default table-box table-responsive mdl-shadow--2dp">
+           
+            <table  class="mdl-data-table">
+                
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">#</th>
+                        <th class="mdl-data-table__cell--non-numeric">ផលិតផល</th>
+                        <th class="text-right">តម្លៃរាយ (រៀល)</th>
+                        <th class="text-right">ចំនួន</th>
+                        <th class="text-right">តម្លៃសរុប (រៀល)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr  *ngFor = "let row of data?.details; let i = index; " [attr.data-index]="i">
+                        <td class="mdl-data-table__cell--non-numeric">{{i+1}}</td>
+                        <td class="mdl-data-table__cell--non-numeric ">
+                            {{ row?.product?.name }}
+                        </td>
+                        <td class="text-right">
+                            {{ row?.unit_price | number }}
+                        </td>
+                        <td class="text-right">
+                            {{ row?.qty }}
+                        </td>
+                        <td class="text-right">
+                            {{ row?.unit_price*row?.qty | number }}
+                        </td>
+                    </tr>
+
+                    <tr >
+
+                        <td class="text-right" colspan="4" >សរុប (រៀល)</td>
+                        <td class="text-right">
+                            <b class="total" >{{ data?.total_price | number }}</b>
+                        </td>
+                        
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" [disabled] = " isSaving " (click) = "invoicePayment(data)" cdkFocusInitial>
+        <mat-spinner *ngIf = " isSaving " style="margin:auto" diameter = " 30 " ></mat-spinner>
+        <span *ngIf = " !isSaving " >បោះពុម្ព</span>
+    </button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>បិទ</button>
+</mat-dialog-actions>
+

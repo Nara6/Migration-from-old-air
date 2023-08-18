@@ -1,0 +1,82 @@
+---
+- name: create user group
+  group:
+    name: '{{ item.name }}'
+    state: present
+  no_log: true
+  with_items:
+    - '{{ group_users }}'
+
+- name: create login user
+  user:
+    name: '{{ item.name }}'
+    state: present
+    password: '{{ item.password }}'
+    groups:
+      - '{{ item.type }}'
+    shell: /bin/bash
+    createhome: no
+  with_items: 
+    - '{{ users }}'
+- name: Force user to change the password
+  command: chage -d 0 "{{item.name}}"
+  with_items:
+    - '{{ users }}'
+- name: Remove the user 'meow'
+  ansible.builtin.user:
+    name: nara
+    state: absent
+    remove: yes
+- name: Add the user phireak with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+  ansible.builtin.user:
+    name: '{{ item }}'
+    shell: /bin/bash
+    groups: devops
+    append: yes
+  with_items: 
+    - nara
+
+- name: set authorized key in alternative location
+  authorized_key:
+    user: "{{ item.name }}"
+    key: "{{ lookup('file', 'authorized_keys/{{ item.name }}.keys' ) }}"
+    path: '/home/{{item.name}}/.ssh/authorized_keys'
+    manage_dir: false
+    exclusive: yes
+    state: present
+  with_items: 
+    - "{{users}}"
+
+- name: Add the user phireak with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+  user:
+    name: '{{ item.name }}'
+    shell: /bin/bash
+    groups: root
+    append: yes
+  with_items: 
+    - '{{users}}'
+- name: Add users to sudoers
+  copy:
+    content: "{{ item }} ALL=(ALL) NOPASSWD:ALL"
+    dest: '/etc/sudoers.d/{{ item }}'
+    validate: 'visudo -cf %s'
+  with_items:
+    - nara
+  become: yes
+
+- name: set authorized key for user
+  authorized_key:
+    user: "{{ item }}"
+    key: "{{ lookup('file', 'authorized_keys/{{ item }}.keys' ) }}"
+    path: '/root/.ssh/authorized_keys'
+    manage_dir: false
+    exclusive: yes
+    state: present
+  with_items: 
+    - reak
+    - nara
+    - pisey
+    - vichea
+- name: restart ssh 
+  shell: systemctl restart ssh.service
+# >>>>>>> 5b402a4255fe2e4d61833989f1185df00dfe95c2

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP4-TAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-[900px] ">
+    <div class="container bg-gray-200 w-[600px] h-[750px] border-4 border-black bg shadow-lg shadow-indigo-400/50">
+        <div class="row w-full m-auto h-[11%] mt-[50px]">
+            <div class="header text-[25px] text-center font-bold">About</div>
+            <div class="text-center text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+        <div class="p-7">
+            <img src="https://free4kwallpapers.com/uploads/originals/2015/07/22/natural-cover-facebook.jpg" alt="image" class=" w-full h-[250px] rounded-xl">
+        </div>
+        <div class="content bg-white m-7 mt-0 rounded-md h-auto">
+            <div class="content flex p-1">
+                <button id="his" class="w-full bg-white h-[40px]">History</button>
+                <button id="vis" class="w-full bg-gray-400">Vision</button>
+                <button id="goal" class="w-full bg-gray-400">Goals</button>
+            </div>
+            <div id="hisContent" class="m-7 mt-0">
+                <h3 class="font-bold">History</h3>
+                <p class="text-sm p-2 pl-0 w-full font-serif-Georgia">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed elementum enim, sed ultricies quam. Donec id nulla tristique, commodo erat ac, sodales ex. Nunc dignissim nisl est, a placerat nisl rutrum quis. Ut dignissim, tellus eu rutrum aliquam, sapien augue scelerisque eros, ut cursus libero enim a velit. Nulla dignissim orci quis est venenatis interdum. Cras efficitur, ex ac bibendum gravida, tortor purus consequat</p>
+            </div>
+            <div id="visContent" class="hidden m-7 mt-0">
+                <h3 class="font-bold">Vision</h3>
+                <p class="text-sm p-2 pl-0 w-full">Mauris tincidunt, quam sed tincidunt tempor, lectus neque vulputate magna, nec bibendum lectus neque vel sapien. Vestibulum vel sagittis sapien, a commodo ex. Praesent posuere quam et ligula malesuada, nec lacinia ipsum bibendum. Mauris sapien orci, efficitur vel placerat a, sollicitudin sit amet felis. Donec vitae maximus sapien.</p>
+                <ul class="text-sm list-none">
+                    <li>list item</li>
+                    <li>list item</li>
+                    <li>list item</li>
+                </ul>
+            </div>
+            <div id="goalContent" class="hidden m-7 mt-0">
+                <h3 class="font-bold">Goals</h3>
+                <p class="text-sm p-2 pl-0 w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed elementum enim, sed ultricies quam. Donec id nulla tristique, commodo erat ac, sodales ex. Nunc dignissim nisl est, a placerat nisl rutrum quis. Ut dignissim, tellus eu rutrum aliquam, sapien augue scelerisque eros, ut cursus libero enim a velit. Nulla dignissim orci quis est venenatis interdum. Cras efficitur, ex ac bibendum gravida, tortor purus consequat</p>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        btnHis = document.getElementById("his");
+        btnVis = document.getElementById("vis");
+        btngoal = document.getElementById("goal");
+        hisCont = document.getElementById("hisContent");
+        visCont = document.getElementById("visContent");
+        goalCont = document.getElementById("goalContent");
+
+
+        btnVis.addEventListener("click", function(){
+            hisCont.style.display = "none";
+            visCont.style.display = "block"
+            goalCont.style.display = "none";
+            btnHis.style.backgroundColor ="rgb(156 163 175)";
+            btngoal.style.backgroundColor ="rgb(156 163 175)";
+            btnVis.style.backgroundColor = "white";
+        })
+        btnHis.addEventListener("click", function(){
+            hisCont.style.display = "block";
+            visCont.style.display = "none";
+            goalCont.style.display = "none";
+            btnVis.style.backgroundColor ="rgb(156 163 175)";
+            btngoal.style.backgroundColor ="rgb(156 163 175)";
+            btnHis.style.backgroundColor = "white";
+        })
+        btngoal.addEventListener("click", function(){
+            goalCont.style.display = "block";
+            visCont.style.display = "none";
+            hisCont.style.display = "none";
+            btnVis.style.backgroundColor ="rgb(156 163 175)";
+            btnHis.style.backgroundColor ="rgb(156 163 175)";
+            btngoal.style.backgroundColor = "white";
+        })
+    </script>
+</body>
+</html>

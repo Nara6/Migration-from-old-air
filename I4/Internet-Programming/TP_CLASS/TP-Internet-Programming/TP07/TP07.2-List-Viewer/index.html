@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        .loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: rgb(0, 0, 0);
+  }
+    .loader:before,
+    .loader:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      transform: rotateX(70deg);
+      animation: 1s spin linear infinite;
+    }
+    .loader:after {
+      color: #FF3D00;
+      transform: rotateY(70deg);
+      animation-delay: .4s;
+    }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotateccw {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      box-shadow: .2em 0px 0 0px currentcolor;
+    }
+    12% {
+      box-shadow: .2em .2em 0 0 currentcolor;
+    }
+    25% {
+      box-shadow: 0 .2em 0 0px currentcolor;
+    }
+    37% {
+      box-shadow: -.2em .2em 0 0 currentcolor;
+    }
+    50% {
+      box-shadow: -.2em 0 0 0 currentcolor;
+    }
+    62% {
+      box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+    75% {
+      box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+    87% {
+      box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+  }
+
+    </style>
+    <title>List View</title>
+</head>
+<body class="flex items-center flex-col w-full h-screen justify-center">
+    <h1 class="header text-[50px] mt-[50px]" hidden style="font-family: 'Lobster', cursive;">Find your favorite🍺?</h1>
+    <div class="flex w-full justify-center">
+        <div hidden id="scroll" class="w-[40%] h-screen bg-gray-200 overflow-scroll "></div>
+        <div hidden id="content" class="w-[40%] h-screen bg-sky-200" >
+
+        </div>
+    </div>
+    <span id="loader" class="loader"></span>
+    
+
+
+    <script>
+        const scroll = document.getElementById('scroll');
+        const loader= document.getElementById('loader')
+        const items = document.getElementById('content');
+        const item = document.getElementById('item');
+        const localSto = [{}];
+        let pageNumber = 1;
+        const loadData = ()=>{
+            try{
+                if (localStorage.getItem('pageArr1') && pageNumber == 1) {
+                    let data1 = [{}];
+                    for (i = 0; i < localStorage.length; i++) {
+                        data1[i] = JSON.parse(localStorage.getItem(`pageArr${i+1}`));
+
+                        for (j in data1[i]) {
+                                scroll.innerHTML += 
+                                        `<a id="item" href="#?id=${data1[i][j].id}" class="flex w-full hover:cursor-pointer"><span class="text-[50px] w-[10%]">🍻</span>
+                                        <div class="flex flex-col w-[80%] p-[5px] mt-3 ">
+                                        <span class="font-bold w-full">${data1[i][j].name}</span>
+                                        <span class="overflow-hidden text-ellipsis whitespace-nowrap text-gray-600">${data1[i][j].description}</span>
+                                        </div></a>`
+                        }
+                        
+                    }
+                    setTimeout(()=>{
+                        loader.style.display="none";
+                        document.querySelector(".header").hidden =false;
+                        scroll.hidden = false;
+                        items.hidden = false;
+                    },2000)
+                    pageNumber = i;
+                }else if(pageNumber>=0){
+                    fetch(`https://api.punkapi.com/v2/beers?page=${pageNumber}&per_page=20`).then(async (res)=>{
+                        const data = await res.json();
+                        console.log(data);
+                        let localData='';
+                        for(let i=0; i<20; i++){
+                            scroll.innerHTML += `<a id="item" href="#?id=${data[i].id}" class="flex w-full hover:cursor-pointer"><span class="text-[50px] w-[10%]">🍻</span>
+                                                <div class="flex flex-col w-[80%] p-[5px] mt-3 ">
+                                                <span class="font-bold w-full">${data[i].name}</span>
+                                                <span class="overflow-hidden text-ellipsis whitespace-nowrap text-gray-600">${data[i].description}</span>
+                                                </div></a>`
+
+
+                            localData = {
+                                id: `${data[i].id}`,
+                                name: `${data[i].name}`,
+                                description: `${data[i].description}`,
+                                first_brewed: `${data[i].first_brewed}`,
+                                image_url: `${data[i].image_url}`,
+                                contributed_by: `${data[i].contributed_by}`,
+                            };
+                            // console.log(localData);
+                            localSto[i] = localData;  
+                            // console.log(localSto);
+
+                        }
+                    
+                    // console.log(pageNumber);
+                    localStorage.setItem(`pageArr${pageNumber}`, JSON.stringify(localSto));
+                    })
+                }
+            }catch(err){
+                console.log(err);
+            }
+        }
+        const loadItemContent = ()=>{
+            const itemID = parseInt(document.URL.split("id=")[1]);
+            console.log(itemID);
+            fetch(`https://api.punkapi.com/v2/beers/${itemID}`).then(async (res)=>{
+                const data = await res.json();
+                console.log(data[0].tagline);
+                console.log(data[0].tagline);
+
+
+                items.innerHTML = `<div class="flex flex-col items-center gap-y-3">
+                                    <img class="h-[400px] w-[200px]" src="${data[0]['image_url']}">
+                                    <span class="font-bold text-[20px]">${data[0].name}</span>
+                                    <span class="text-gray-400 font-bold">${data[0].first_brewed}</span>
+                                    <span class="text-center">${data[0].description}</span>
+                                    <span class="text-[15px] mt-3">Contributor</span>
+                                    <span class="font-bold">(${data[0].contributed_by})</span>
+                                    </div>`
+                
+            })
+        }
+        loadData();
+        window.addEventListener('hashchange',()=>{
+            loadItemContent();
+            // console.log("hi");
+        })
+        scroll.addEventListener('scroll',()=>{
+            const {clientHeight, scrollTop, scrollHeight} = scroll;
+            console.log(scrollHeight,scrollTop+clientHeight);
+            console.log(pageNumber);
+            if(scrollHeight == clientHeight+scrollTop){
+                pageNumber++;
+                loadData();
+            }
+            if (clientHeight + scrollTop > (1030 * (pageNumber + 1)) + 600) {
+                pageNumber++;
+
+            } else if (clientHeight + scrollTop <= (1030 * (pageNumber) + 500)) {
+                pageNumber--;
+
+            }
+        })
+    
+    </script>
+</body>
+
+</html>

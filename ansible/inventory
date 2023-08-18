@@ -1,0 +1,9 @@
+localhost ansible_python_interpreter=python3
+[development]
+103.253.146.224 ansible_user=root
+[nodes]
+128.199.223.46 ansible_user=root
+[grafana]
+159.65.141.224 ansible_user=root
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

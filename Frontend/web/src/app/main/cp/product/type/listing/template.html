@@ -1,0 +1,77 @@
+
+<div class="content-cnt page-layout blank">
+
+    <div  class="header  p-24 h-80" fxLayout="row" fxLayoutAlign="start center"  >
+        <div fxFlex="50"  >
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">ផលិតផល</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">ប្រភេទផលិតផល</span>
+            </div>
+        </div>
+
+        <div fxFlex="50" class="text-right"  >
+            <button  mat-stroked-button color="accent" (click) = " openCreateForm() ">
+                <mat-icon class="material-icons">add</mat-icon><span>បង្កើតថ្មី</span> 
+            </button>
+        </div>
+    </div>
+
+    <div class="content" >
+        <div  class="tab-content p-24">
+
+       
+
+            <section class="listing" >
+
+                <div *ngIf = " isSearching " >
+                    <mat-spinner style="margin:auto" diameter = " 40 " ></mat-spinner>
+                </div>
+                
+                <table *ngIf = " !isSearching " class="proposal-value-table" >
+           
+                    <thead>
+                        <tr>
+                            <th >ល.រ</th>
+                            <th >ឈ្មោះ</th>
+                            <th class="text-right">ចំនួនផលិតផល</th>
+                            <th class="text-right" ></th>                                                                
+                          
+                        </tr>
+                    </thead>
+
+                    <tbody>
+        
+        
+                        <tr *ngFor="let row of data; let i = index; " [attr.data-index]="i">
+
+                            <td >{{ i+1 }}</td>
+                            <td >{{ row?.name }}</td>
+                            <td class="text-right">{{ row?.n_of_products }}</td>               
+                            
+                            <td class="text-right">
+                                &nbsp; 
+                                <button  mat-icon-button color="accent"  (click) = "openEditForm(row)" matTooltip="កែប្រែ">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+                                <button [disabled]="row.n_of_products != 0"  mat-icon-button color="warn" (click)="onDelete(row)"   matTooltip="លុប">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                           
+                        </tr>
+
+                    </tbody>
+        
+                </table>
+
+            </section>
+            
+        </div>
+    </div>
+    
+</div>
+

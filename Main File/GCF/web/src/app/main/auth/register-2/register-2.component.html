@@ -1,0 +1,121 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    
+
+    <div id="login-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo"><!-- fxHide.gt-xs -->
+                <img src="assets/mlm/niph.png">
+            </div>
+
+            <div class="title text-center">ចុះឈ្មោះគណនីរបស់អ្នក</div>
+            
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>IDអ្នកណែនាំ</mat-label>
+                    <input matInput type="text"formControlName="ref" required>
+                    <mat-icon  matSuffix class="secondary-text">person</mat-icon>
+                    <mat-error>
+                        <span *ngIf="form.get('ref').hasError('required')">សូម​បញ្ចូលIDអ្នកណែនាំ។</span>
+                        <span *ngIf="form.get('ref').hasError('servererror')">{{ form.get('ref').errors.servererror }}</span>
+                    </mat-error>
+                </mat-form-field>
+                <!-- =========================================================================> name -->
+                <mat-form-field appearance="outline">
+                    <mat-label>ឈ្មោះ</mat-label>
+                    <input matInput type="text"formControlName="name" required>
+                    <mat-icon  matSuffix class="secondary-text">person</mat-icon>
+                    <mat-error>
+                        <span *ngIf="form.get('name').hasError('required')">សូម​បញ្ចូល​ឈ្មោះ​របស់​អ្នក។</span>
+                        <span *ngIf="form.get('name').hasError('servererror')">{{ form.get('name').errors.servererror }}</span>
+                    </mat-error>
+                </mat-form-field>
+                <!-- =========================================================================> phone -->
+                <mat-form-field appearance="outline">
+                    <mat-label>ទូរស័ព្ទ</mat-label>
+                    <input matInput type="text"formControlName="phone" required>
+                    <mat-icon  matSuffix class="secondary-text">smartphone</mat-icon>
+                    <mat-error>
+                        <span *ngIf="form.get('phone').hasError('required')">សូមបញ្ចូលលេខទូរស័ព្ទ។</span>
+                        <span *ngIf="form.get('phone').hasError('pattern')">សូមបញ្ចូលលេខទូរស័ព្ទឧទាហរណ៍៖ ០៩៦៥៤១៦៧០៤ </span>  
+                        <span *ngIf="form.get('phone').hasError('servererror')">{{ form.get('phone').errors.servererror }}</span>
+                    </mat-error>
+                </mat-form-field>
+                <!-- =========================================================================> Email -->
+
+                <mat-form-field appearance="outline">
+                    <mat-label>អ៊ីមែល</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error> 
+                        <span *ngIf="form.get('email').hasError('required')"
+                        >សូមបញ្ជូលអុីម៉ែល</span
+                      >
+                      <span *ngIf="form.get('email').hasError('email')"
+                        >សូមបញ្ចូលអុីម៉ែលត្រឹមត្រូវ ឧ.admin@camcyber.gov.kh</span
+                      >
+                        <span *ngIf="form.get('email').hasError('servererror')">{{ form.get('email').errors.servererror }}</span>
+                    </mat-error>
+                </mat-form-field>
+                <!-- =========================================================================> Password -->     
+                <mat-form-field appearance="outline">
+                    <mat-label>ពាក្យសម្ងាត់</mat-label>
+                     <input matInput type="password" formControlName="password"  required>
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        <span *ngIf="form.get('password').hasError('required')">សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​របស់​អ្នក</span>
+                        <span *ngIf="form.get('password').hasError('minlength')">ប្រវែងពាក្យសម្ងាត់របស់អ្នកត្រូវមានយ៉ាងហោចណាស់ ៦ ខ្ទង់។</span>
+                        <span *ngIf="form.get('password').hasError('maxlength')">ពាក្យសម្ងាត់មិនអាចបញ្ចូលច្រើនជាង ២០ ខ្ទង់បានទេ។</span>
+                        <span *ngIf="form.get('password').hasError('servererror')">{{ form.get('password').errors.servererror }}</span>
+                    </mat-error>
+                </mat-form-field>
+                <!-- =========================================================================> Confrim --> 
+                <mat-form-field appearance="outline">
+                    <mat-label>បញ្ជាក់ពាក្យសម្ងាត់</mat-label>
+                    <input matInput type="password" formControlName="password_confirmation" required> <!--[maxlength]="20"-->
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        <span *ngIf="form.get('password_confirmation').hasError('required')">សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​របស់​អ្នក</span>
+                        <span *ngIf="form.get('password').hasError('minlength')">ប្រវែងពាក្យសម្ងាត់របស់អ្នកត្រូវមានយ៉ាងហោចណាស់ ៦ ខ្ទង់។</span>
+                        <span *ngIf="form.get('password').hasError('maxlength')">ពាក្យសម្ងាត់មិនអាចបញ្ចូលច្រើនជាង ២០ ខ្ទង់បានទេ។</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                     fxLayoutAlign="space-between center">
+                   
+                     <a class="forgot-password" [routerLink]="['/auth/login']">
+                        ចូលប្រព័ន្ធ
+                    </a>
+
+                    <a class="forgot-password" [routerLink]="['/auth/forgot-password']">
+                        ភ្លេច​ពាក្យសម្ងាត់?
+                    </a>
+                </div>
+
+                <button mat-raised-button color="accent" class="submit-button text-center" aria-label="LOG IN" [disabled]="form.invalid || isLoading">
+                    <mat-spinner style="margin:0 auto; " [diameter] = 30  *ngIf = " isLoading "  ></mat-spinner> <span *ngIf = " !isLoading " >ចុះឈ្មោះ</span>
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <!-- <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img src="assets/mlm/niph-logo.png">
+        </div> -->
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            <b style="color:white" >សូមស្វាគមន៏មកកាន់ GCF Investment</b>
+        </div>
+
+    </div>
+    
+</div>

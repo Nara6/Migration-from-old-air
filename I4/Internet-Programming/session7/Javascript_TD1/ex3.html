@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session7</title>
+</head>
+<body>
+    
+    <canvas width="1000px" height="300px" id="canvas-container"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas-container");
+        console.log("canvas: ",canvas);
+
+        let ctx = canvas.getContext("2d");
+        // ctx.fillStyle = "#F0DB4F";
+        // ctx.strokeStyle = "red";
+        // ctx.fillRect(50,50,150,100);
+        // ctx.strokeRect(50,50,150,100);
+        // ctx.fillStyle="green";
+        // ctx.fillRect(100,100,150,100);
+        const greenBrick = {
+            backgroundColor: "#40916c",
+            border: "black",
+            width: 50,
+            height: 20,
+            draw: (x,y)=>{
+                ctx.fillStyle = greenBrick.backgroundColor;
+                ctx.strokeStyle = greenBrick.border;
+                ctx.fillRect(x,y,greenBrick.width,greenBrick.height);
+                ctx.strokeRect(x,y,greenBrick.width,greenBrick.height); 
+            }
+        };
+        const yellowBrick = {
+            backgroundColor: "#ff9f1c",
+            border: "blue",
+            width: 50,
+            height: 50,
+            draw: (x,y)=>{
+                ctx.fillStyle = yellowBrick.backgroundColor;
+                ctx.strokeStyle = yellowBrick.border;
+                ctx.fillRect(x,y,yellowBrick.width,yellowBrick.height);
+                ctx.strokeRect(x,y,yellowBrick.width,yellowBrick.height);
+            }
+        };
+        const redBrick = {
+            backgroundColor: "#9d0208",
+            border: "#8338ec",
+            width: 20,
+            height: 50,
+            draw: (x,y)=>{
+                ctx.fillStyle = redBrick.backgroundColor;
+                ctx.strokeStyle = redBrick.border;
+                ctx.fillRect(x,y,redBrick.width,redBrick.height);
+                ctx.strokeRect(x,y,redBrick.width,redBrick.height);
+            }
+        };
+        // greenBrick.draw();
+        // yellowBrick.draw();
+        // redBrick.draw();
+
+        // here are my function
+        function createWall(width, height,brick){
+            
+            var index=1;
+            let currentPositionX=0;
+            for(let i=0; i<=width; i=i+brick.width){
+                const x=currentPositionX;
+                const y=0;
+                brick.draw(x,y);
+                currentPositionX=width*index;
+                index++;
+            }
+        }
+        createWall(300,200,greenBrick);
+        // ctx.fillStyle = greenBrick.backgroundColor;
+        // ctx.strokeStyle = greenBrick.border;
+        // ctx.fillRect(50,50,greenBrick.width,greenBrick.height);
+        // ctx.strokeRect(50,50,greenBrick.width,greenBrick.height);
+        // ctx.fillStyle = yellowBrick.backgroundColor;
+        // ctx.strokeStyle = yellowBrick.border;
+        // ctx.fillRect(50,100,yellowBrick.width,yellowBrick.height);
+        // ctx.strokeRect(50,100,yellowBrick.width,yellowBrick.height);
+        // ctx.fillStyle = redBrick.backgroundColor;
+        // ctx.strokeStyle = redBrick.border;
+        // ctx.fillRect(50,180,redBrick.width,redBrick.height);
+        // ctx.strokeRect(50,180,redBrick.width,redBrick.height);
+
+    </script>
+</body>
+</html>

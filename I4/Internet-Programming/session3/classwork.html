@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork</title>
+    <!-- to apply layout on page -->
+    <style>
+        .header{
+            padding: 20px;
+            width: 50%;
+            
+        }
+        .input{
+            width: 35%; 
+            padding: 4px;
+            margin-right: 60px;
+            margin-bottom: 10px;
+            margin-left: 50px;
+        }
+        .textarea{
+            width: 36%;
+            vertical-align: top;
+            height:100px;
+            margin-left: 25px;
+        }
+        .checkbox{
+            margin: 15px 5px 15px 55px;
+        }
+        .label{
+            margin-left: 5px;
+        }
+        .li{
+            margin-bottom: 1px;
+            font-size: 18px;
+        }
+        .li::marker{
+            font-size: 22px;
+        }
+        .td{
+            border: 2.5px solid;
+        }
+        
+    </style>
+</head>
+<body>
+    <table width="100%">
+        <tr>
+            <td>
+                <h3 style="margin-left: 15px;">Awesome App</h3>
+            </td>
+            <td align="right">
+                <a href = "#"> HOME | </a>
+                <a href = "#"> PRODUCT | </a>
+                <a href = "#"> COMPANY | </a>
+                <a href = "#"> BLOG | </a>
+            </td>
+        </tr>
+    </table>
+    <table width="99%" style="margin-left: 10px; border-collapse: separate; border-spacing: 10px" >
+        <tr style="height: 200px;">
+            <td rowspan ="3" class="header td" valign="top">
+                <!-- header form -->
+                <h3 style="margin-bottom: 30px">User's Feedback</h3>
+                <form>
+                    <!-- Name form input-->
+                    <label for="name" >Name</label>
+                    <input type="text" class= "input"><br>
+                     <!-- email form input-->
+                    <label for="email" >Email</label>
+                    <input type="email" class= "input"><br>
+                     <!-- comment form input-->
+                    <label for="name" >Comment</label>
+                    <textarea class="textarea"></textarea><br>
+                     <!-- gender form checkbox-->
+                    <label for="name" >Gender</label>
+                    <input type="checkbox" class="checkbox">
+                    <label for="male" class="label">Male</label>
+                    <input type="checkbox" class="checkbox">
+                    <label for="male" class="label">Female</label><br><br>
+                    <!-- button summit -->
+                    <button style="margin-left:42%">Submit</button>
+
+                </form>
+            </td>
+            <!-- for 2nd column and 1st rowspan -->
+            <td class="td">
+                <h3 style="margin-left: 12px">My Favorite items</h3>
+                <ul >
+                    <li class="li">
+                        Item one
+                    </li>
+                    <li class="li">
+                        Item two
+                    </li>
+                    <li class="li">
+                        Item three
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr style="height: 200px;">
+            <!-- for 2nd column and 2nd rowspan -->
+            <td valign="top" class="td">
+                <h3 style="margin-left: 12px">My purchased items</h3>
+                <ol>
+                    <li class="li">
+                        Book
+                    </li>
+                    <li class="li">
+                        Pencil
+                    </li>
+                    <li class="li">
+                        Eraser
+                    </li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 200px;">
+            <td class="td"></td>
+        </tr>
+    </table>
+    <!-- for footer of the page -->
+    <table width="100%">
+        <tr>
+            <td>
+                <h4 style="margin-left: 15px;">By I4GIC</h3>
+            </td>
+            <td align="right" style="padding: 15px;">
+                About us
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>  

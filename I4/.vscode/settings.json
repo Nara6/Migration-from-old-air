@@ -1,0 +1,22 @@
+{
+    "java.project.sourcePaths": [
+        "Software-Engineer/TP_11",
+        "Software-Engineer/TP_10",
+        "Software-Engineer/TP_09",
+        "Software-Engineer/TP_06",
+        "Software-Engineer/TP_05",
+        "Software-Engineer/TP_04",
+        "Software-Engineer/TP_01/Exercise_2",
+        "Software-Engineer/Session4",
+        "Software-Engineer/Session2",
+        "Software-Engineer/Session1",
+        "Software-Engineer/Final",
+        "Software-Engineer/TP14/DesktopApp/nara/src/main/java/gic/itc"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/nara/Downloads/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31.jar"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic"
+}

@@ -1,0 +1,54 @@
+<div class="content" [style.width]=" '1200px' ">
+  <div class="tab-content p-24">
+    <h1 mat-dialog-title class="p-2">ខេត្ត: {{ data?.kh_name }}</h1>
+    <section class="listing">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>លេខកូត​​​</th>
+            <th>ឈ្មោះស្រុក</th>
+            <th class="text-right">ចំនួនឃុំ</th>
+            <th class="text-right">ចំនួនភូមិ</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            *ngFor="let row of data?.districts; let i = index; "
+            [attr.data-index]="i"
+          >
+            <td>{{ row?.code }}</td>
+            <td><b>{{ row?.kh_name }}</b> <br /></td>
+            <td class="text-right">{{ data?.n_of_communes }}</td>
+            <td class="text-right">{{ data?.n_of_villages }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div fxLayoutAlign="center center">
+        <tr *ngIf=" data?.majors?.length == 0 " class="text-center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-icon
+              role="img"
+              class="
+                mat-icon
+                notranslate
+                s-100
+                mb-16
+                select-message-icon
+                hint-text
+                material-icons
+                mat-icon-no-color
+              "
+              aria-hidden="true"
+            >
+              toc
+            </mat-icon>
+            <span class="select-message-text hint-text"
+              ><span>គ្មានទន្និន័យ</span></span
+            >
+          </div>
+        </tr>
+      </div>
+    </section>
+  </div>
+</div>

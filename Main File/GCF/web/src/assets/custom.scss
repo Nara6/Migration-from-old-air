@@ -1,0 +1,84 @@
+@import "src/@fuse/scss/fuse";
+
+.page-content{
+    width:100%; 
+}
+
+.tab-title{
+    font-size: 18px;
+}
+
+.content-cnt {
+
+    .main-widget {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        display: flex;
+        flex: 1 1 auto;
+        padding: 32px;
+        min-width: 0;
+        background: #ffffff66; 
+
+        .tab-content{
+
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid;
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+        .update-content{
+
+            width: 100%;
+           // background: white;
+          border-radius: 8px;
+           // border: 1px solid;
+           // border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        @include media-breakpoint('lt-lg') {
+            flex-direction: column;
+        }
+
+       
+    }
+
+}
+
+.btn-icon-searching-search {
+    color: #003398;
+}
+
+.btn-icon-searching-filter {
+    color: #00000061;
+}
+
+.btn-icon-searching-add {
+    background: #003398;
+}
+
+.portrait {
+    padding: 20px;
+}
+
+.type-service{
+    //background: rgba(3, 155, 229, 0.17);
+    padding: 20px;
+    font-size: 18px;
+    color: blue;
+    font-weight:600;
+}
+.mat-label{
+    margin-right: 30px;
+    margin-top: 9px;
+}
+.mat-form{
+    margin-right: 30px;
+}
+
+.mat-header-cell{
+    color:red; 
+}

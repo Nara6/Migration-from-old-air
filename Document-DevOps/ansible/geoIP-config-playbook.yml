@@ -1,0 +1,13 @@
+---
+- hosts: grafana
+  tasks:
+    - name: Clone a github repository geoIP config
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/GeoIP.git
+        dest: /root/GeoIP
+        clone: yes
+        update: yes
+    - name: Move geoIP-city
+      command: "sudo mv /root/GeoIP/geoip-city.dat /etc/nginx"
+    - name: Move geoIP-country
+      command: "sudo mv /root/GeoIP/geoip-country.dat /etc/nginx"

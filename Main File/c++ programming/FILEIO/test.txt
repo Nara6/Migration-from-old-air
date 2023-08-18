@@ -1,0 +1,4 @@
+1	Nara	M
+2	Chin	M
+3	Meow	F
+4	Thida	F

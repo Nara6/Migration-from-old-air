@@ -1,0 +1,468 @@
+const Borrow = require("../src/models/borrow");
+const Users = require("../src/models/user");
+const bookUnit = require("../src/models/bookUnit");
+
+
+async function getUsersId(){
+    var userId = []
+    const data = await Users.find().select('_id').select('name')
+    data.forEach((usrId) => {
+        const user = {
+            id: usrId._id.toString(),
+            Users: usrId.Users
+        }
+        userId.push(user)
+    })
+    return userId
+}
+async function getBookUnitId(){
+    var bookUnitId = []
+    const data = await bookUnit.find().select('_id').select('isbn')
+    data.forEach((bookunitId) => {
+        const bookunit = {
+            id: bookunitId._id.toString(),
+            isbn: bookunitId.isbn
+        }
+        bookUnitId.push(bookunit)
+    })
+    return bookUnitId
+};
+async function formData(){
+    const user = await getUsersId()
+    const bookUnit = await  getBookUnitId()
+    const data = [
+        {   
+            userId:user[0].id,
+            bookUnit:bookUnit[0].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+        },
+        {   
+            userId:user[1].id,
+            bookUnit:bookUnit[1].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+        },
+        {   
+            userId:user[2].id,
+            bookUnit:bookUnit[2].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+        },
+        {   
+            userId:user[4].id,
+            bookUnit:bookUnit[4].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 1 ,
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[3].id,
+            bookUnit:bookUnit[3].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 1 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[5].id,
+            bookUnit:bookUnit[5].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[6].id,
+            bookUnit:bookUnit[6].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[7].id,
+            bookUnit:bookUnit[7].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "rejected",
+        },
+        {   
+            userId:user[8].id,
+            bookUnit:bookUnit[8].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            status: "rejected",
+        },
+        {   
+            userId:user[9].id,
+            bookUnit:bookUnit[9].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[10].id,
+            bookUnit:bookUnit[10].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[11].id,
+            bookUnit:bookUnit[11].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[12].id,
+            bookUnit:bookUnit[12].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[13].id,
+            bookUnit:bookUnit[13].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[14].id,
+            bookUnit:bookUnit[14].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[15].id,
+            bookUnit:bookUnit[15].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "cancel",
+        },
+        {   
+            userId:user[17].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[18].id,
+            bookUnit:bookUnit[18].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[19].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[20].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[21].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[22].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[23].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[24].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[25].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[26].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[27].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[28].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[29].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[30].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[31].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[32].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[33].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[34].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[35].id,
+            bookUnit:bookUnit[19].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[36].id,
+            bookUnit:bookUnit[18].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[37].id,
+            bookUnit:bookUnit[18].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[17].id,
+            bookUnit:bookUnit[18].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[17].id,
+            bookUnit:bookUnit[18].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[21].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[10].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[22].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[30].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[44].id,
+            bookUnit:bookUnit[17].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[32].id,
+            bookUnit:bookUnit[10].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[32].id,
+            bookUnit:bookUnit[10].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[30].id,
+            bookUnit:bookUnit[10].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[10].id,
+            bookUnit:bookUnit[1].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+        {   
+            userId:user[10].id,
+            bookUnit:bookUnit[7].id, 
+            reason:"wanna more about coding",
+            pickUpDate:new Date("2022-6-17"),
+            duration: 3 ,
+            status: "approved",
+            returnDate: new Date("2022-6-20"),
+        },
+    ]
+    return data
+}
+
+const createBorrowBook = async () => {
+    const data = await formData()
+    const result = await Borrow.insertMany(data);
+    console.log("Insert Borrow Successfully");
+};
+
+module.exports = {
+  createBorrowBook,
+};

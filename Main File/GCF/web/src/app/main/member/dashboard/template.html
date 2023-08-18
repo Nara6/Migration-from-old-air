@@ -1,0 +1,15 @@
+<div style="width:100%" >
+   
+      <div class="content">
+                <!-- // ======================= -->
+                <ng-container  *ngIf=" rank == 'no-rank'">
+                 <order-selector></order-selector>
+       
+                </ng-container>
+                <ng-container  *ngIf=" rank == 'have-rank'">
+                <!-- // ======================= -->
+                 <info-selector></info-selector>
+                </ng-container>
+    </div>
+</div>
+

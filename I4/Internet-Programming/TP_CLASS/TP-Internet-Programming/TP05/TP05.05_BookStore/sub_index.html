@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tittle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body onload="display();">
+    <div class="w-full h-screen">
+        <div class="h-[40%] bg-slate-600 text-white flex flex-col gap-4 items-center justify-center">
+            <div id="title" class="font-bold text-4xl"></div>
+            <div id="albumId"></div>
+            <div hidden id="res">Resize the window to see that this web page responsive by the way</div>
+        </div>
+        <div class="flex flex-col justify-center items-center pt-7 font-bold text-2xl gap-4">
+            <div id="catId"></div>
+            <img id="thumbnail">
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: build image
+      docker_image:
+        build:
+          path: /apps/backend/api
+        name: api_pos
+        tag: V"{{ version.stdout }}"
+        source: build
+        

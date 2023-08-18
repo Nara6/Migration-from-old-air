@@ -1,0 +1,11 @@
+- name: Register runner for a specific project
+  gitlab_runner:
+    # api_username: "Nara"
+    #api_oauth_token: "d3JiVeUrcsc_RQ79mxYw" 
+    api_url: http://code.gitlab.camcyber.com/
+    registration_token: "{{registration_token}}"
+    description: '{{ project_name }}'
+    state: present
+    project: devops
+    # api_job_token:
+    api_token: DSTgYNnzkvji-mcL1T66

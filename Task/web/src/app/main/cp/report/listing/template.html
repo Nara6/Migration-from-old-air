@@ -1,0 +1,63 @@
+
+<div class="content-cnt page-layout blank">
+
+    <div class="header  p-24 h-80" fxLayout="row" fxLayoutAlign="start center"  >
+        <div fxFlex="50"  >
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">របាយការណ៍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content"  >
+        <div  class="tab-content p-24">
+
+            <section class="filter" >
+                <div fxLayout="row " fxLayoutAlign="start center"  >
+
+                    <div fxFlex="20" class="mr-8 pt-12" >
+                        <mat-form-field style="width:100%" >
+                            <mat-label>ប្រភេទ</mat-label>
+                            <mat-select [(ngModel)] = " type_print "  >
+                                <mat-option [value] = " 0 " > ចំណូល</mat-option>
+                                <!-- <mat-option [value] = " 1 " > ចំណាយ</mat-option> -->
+                                <mat-option [value] = " 2 " > គណនេយ្យ</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                           
+                    </div>
+
+                    <div fxFlex="20" class="mr-8 pt-12" >
+                        <mat-form-field style="width:100%" >
+                            <mat-label>គិតជា</mat-label>
+                            <mat-select [(ngModel)] = " status_date "  >
+                                <mat-option [value] = " 0 " > ថ្ងៃ</mat-option>
+                                <mat-option [value] = " 1 " > ខែ</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                           
+                    </div>
+
+                    <!-- =======================from-date================================================= -->
+                    <mat-form-field fxFlex="15" class="mr-8 pt-16">
+                        <mat-label> កាលបរិច្ឆេទ </mat-label>
+                        <input (click)="from_picker.open()" matInput [(ngModel)]="from" [matDatepicker]="from_picker" style = " cursor:pointer " [readonly] = " true ">
+                        <mat-datepicker-toggle matSuffix [for]="from_picker"></mat-datepicker-toggle>
+                        <mat-datepicker #from_picker></mat-datepicker>
+                    </mat-form-field>
+      
+                    <div fxFlex  class="text-center">
+                        <button (click)=" printing()"  mat-stroked-button color="accent"  >
+                           <span >ទាញរបាយការណ៍</span> 
+                        </button>
+                    </div>           
+                </div>
+            </section>
+            
+        </div>
+    </div>
+    
+</div>
+

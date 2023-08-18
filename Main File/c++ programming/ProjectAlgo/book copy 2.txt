@@ -1,0 +1,7 @@
+1   2	Life_of_Pie	Fiction	9.8	Yann_Martel	Jasmine	01/05/2003
+2	4   Harry_Potter	Adventure	25	J.K_Rowling	Rizz	30/5/2019
+3	5   Little_Women	Classic	14	Louisa_May_Alcott	Gupta	25/9/2018
+4	3   Vintage_Beloved	Classic	9	Toni_Morrison	Toni	8/6/2004
+5	3   Circe	Fantasy	12	Madeline_Miller	John	10/4/2018
+9	6   Meow	Fantastic	99	Nara	Jin	10/10/2001
+1	5   test	test	23	test	test	test

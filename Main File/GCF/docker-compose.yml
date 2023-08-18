@@ -1,0 +1,105 @@
+version: "3.7"
+services:
+
+    #==============================================>> Database
+    db:
+        image: mysql:5.7.22
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "1027:3306"
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQl_USER: homestead
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: secret
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./db/mysql:/var/lib/mysql
+        networks:
+            - gcf
+    #==============================================>> Redis Server
+    # cache:
+    #     image: redis:alpine
+    #     volumes:
+    #         - ./cache:/data
+    #     networks:
+    #         - niph
+    #==============================================>> API
+    api:
+        container_name: api
+        build:
+            context: ./api/.
+            dockerfile: Dockerfile
+        volumes:
+            - ./api/app:/var/www/app
+            - ./api/resources:/var/www/resources
+            - ./api/routes:/var/www/routes
+            - ./api/storage:/var/www/storage
+            - ./api/database:/var/www/database
+        command: php artisan --host=0.0.0.0 serve
+        ports:
+            - "1026:8000"
+        environment:
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_DATABASE: gcf_db
+            DB_USERNAME: root
+            DB_PASSWORD: secret
+            FILE_URL: file:8002
+            TELEGRAM_BOT_TOKEN: 2069021660:AAH6x1BFZaeZ5AEnVtMKv4qf2GOBMO6j_tw
+        networks:
+            - gcf
+    #==============================================>> BFF
+    # bff:
+    #     build:
+    #     context: ./bff/.
+    #     environment:
+    #         - REDIS_HOST=redis
+    #         - REDIS_PORT=6379
+    #     networks:
+    #         - niph
+    #==============================================>> Location
+    # location:
+    #     container_name: location
+    #     build:
+    #         context: ./location/.
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - "1028:8001"
+    #     environment:
+    #         DB_HOST: db
+    #         DB_PORT: 3306
+    #         DB_DATABASE: location
+    #         DB_USERNAME: root
+    #         DB_PASSWORD: secret
+    #     networks:
+    #         - niph
+    #==============================================>> FILE
+    file:
+        container_name: file
+        build:
+            context: ./file/.
+            dockerfile: Dockerfile
+        volumes:
+            - ./file/public:/var/www/public
+        ports:
+            - "1025:8002"
+        networks:
+            - gcf
+    #==============================================>> Web
+    web:
+        container_name: web
+        build:
+            context: ./web/.
+            dockerfile: Dockerfile
+        volumes:
+            - ./web/dist/fuse:/var/www/hmtl/dist/fuse
+        ports:
+            - "1024:80"
+        networks:
+            - gcf
+networks:
+    gcf:

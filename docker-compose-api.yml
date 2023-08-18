@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  api:
+      container_name: api
+      build:
+        context: ./api
+        dockerfile: Dockerfile
+      environment:
+        DATABASE_HOST: ${DATABASE_HOST}
+        DATABASE_PORT: ${DATABASE_PORT}
+        DATABASE_USERNAME: ${DATABASE_USERNAME}
+        DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+        DATABASE_NAME: ${DATABASE_NAME}
+        BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS}
+        JWT_EXPIRE_TIME: ${JWT_EXPIRE_TIME}
+        PORT: ${PORT}
+        JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      ports: 
+        - "1001:${PORT}"
+      volumes:
+        - ./src:/app/src

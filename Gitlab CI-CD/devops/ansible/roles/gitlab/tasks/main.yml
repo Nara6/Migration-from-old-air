@@ -1,0 +1,10 @@
+---
+#====================================
+# tasks for managing gitlab cicd
+# author: glizzy
+#====================================
+# - name: install
+#   include_tasks: install.yml
+  
+- name: register gitlab runner
+  include_tasks: register-runner.yml

@@ -1,0 +1,143 @@
+<div id="dashboard-project" class="page-layout simple right-sidebar" fxLayout="row" >
+    <div class="center" >       
+            <!-- Completed Projects -->
+            <div class="content" >
+                <div class="widget-group p-12 pt-80">
+
+                  
+            
+
+            <!-- ============================================================= Filter  -->
+            <div class="content">
+                <!-- //[fxFlex.xs]="update-padding-tab" -->
+                <div class="tab-content p-24">
+                    <!-- ================= Filter ================ -->
+                    <div fxLayout="row " fxLayoutAlign="start top"  >
+                    
+                        <mat-form-field fxFlex="40" style="width:100%" class="pl-20" appearance="fill">
+                            <mat-label >លេខ​វិ​ក័​យ​ប័ត្រ</mat-label>
+                            <input class="padding" matInput  [(ngModel)]="key "  (keyup.enter)="listing()" maxlength="100">
+                        </mat-form-field>
+                    
+                       
+                        <mat-form-field  fxFlex="20" style="width:100%" class="pl-20 p-8">
+                            <mat-select placeholder="ស្ថានភាព" [(ngModel)] = "status" >                        
+                                <mat-option [value]="1">Pending</mat-option>
+                                <mat-option [value]="2">Paid</mat-option>
+                                <mat-option [value]="3">Cancelled</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                
+                        
+                        <div [fxFlex]="'4.5%'" fxFlex.md="50%" fxFlex.sm="50%" fxFlex.xs="100%"  style="padding-bottom: 20px;margin-top:-3px;margin-left: 10px;" >
+                            <button  mat-raised-button class=" p-16"
+                            (click)=" listing()" >
+                            <mat-icon style="color: black; padding-right: 3px;">search</mat-icon>
+                            <span>ស្វែងរក</span>
+                            </button>
+                        </div>
+
+                   
+                    </div>
+                    <section class="listing">
+                        <div *ngIf=" isSearching ">
+                        <mat-spinner style="margin:auto" diameter=" 50 "></mat-spinner>
+                        </div>
+            
+                        <ng-container *ngIf=" data?.length > 0 && !isSearching">
+                        <app-table [tableColumnInfo]="columnTableInfo" [dataSource]="data"></app-table>
+                        </ng-container>
+            
+                        <ng-container *ngIf=" data?.length == 0 && !isSearching ">
+                        <div fxLayout="column" fxLayoutAlign=" center" fxflex>
+                            <mat-icon role="img" class="mat-icon notranslate s-100 mb-16 select-message-icon hint-text material-icons mat-icon-no-color" aria-hidden="true">toc</mat-icon>
+                            <span class="select-message-text hint-text"><span>No Data</span></span>
+                        </div>
+                        </ng-container>
+            
+                    </section>
+                    <!-- when load data -->
+                    
+                    <!-- when load data -->
+                    <div fxLayout="row" fxLayoutAlign="center" *ngIf=" isSearching ">
+                        <!-- <mat-spinner diameter=" 20"></mat-spinner> -->
+                        <span *ngIf="!isLoadMore" class="p-100 load-text-color">កំពុងទាញទិន្នន័យ...</span>
+                        <span *ngIf="isLoadMore" class="pb-8 load-text-color">កំពុងទាញទិន្នន័យបន្ថែម...</span>
+                    </div>
+                    <div fxLayoutAlign="end end">
+                        <tr *ngIf=" data?.length > 0 && !isSearching" style="align-content: flex-end">
+                          <app-paginator [length]="total" [page]="page" [limit]="limit" (pageChanged)="onPageChanged($event)"></app-paginator>
+                        </tr>
+                      </div>
+                 
+                </div>
+            </div>
+                
+            <!-- ====================================================================================>> Table Column -->
+            <ng-template #colNumber let-element let-item let-index>
+                <div class="hover-pionter receipt-color ">
+                <b style="color: rgb(24, 21, 202);">{{ element?.receipt_number}}</b><br>
+                {{ element?.ordered_at |date: 'dd-MMM-yyyy'}}
+                <br />
+                </div>
+            </ng-template>
+            
+            <ng-template #colInformation let-element let-item let-index>
+                <div class="hover-pionter receipt-color">
+                <b> {{ element?.member?.user?.uid}} | {{ element?.member?.user?.name}}</b> 
+                <br />
+                {{ element?.member?.user?.phone}} | {{ element?.member?.user?.email}}
+                </div>
+            </ng-template>
+
+            <ng-template #colPayment let-element let-item let-index>
+                <div class="hover-pionter receipt-color">
+                    <b style="color: #03a9f4;">{{ element?.total_price | number }} USD</b> <br>
+                    <span>{{ element?.total_pv}} PV</span>
+                    
+                    </div>
+            </ng-template>
+            
+            <ng-template #colRank let-element let-item let-index>
+                <div class="hover-pionter receipt-color">
+                    <b>{{ element?.package?.kh_name }}</b> <br>
+                    
+                    </div>
+            </ng-template>
+            
+            
+            <ng-template #colStatus let-element let-item let-index>
+                <div class="hover-pionter receipt-color ">
+                    <b [ngStyle]="{  'color': element?.status?.color }" >{{ element?.status?.name }}</b>
+                   <br> <span> {{ element?.action_at |date: 'dd-MMM-yyyy'}}</span>
+                    </div>
+            </ng-template>
+            
+            <ng-template #colAction let-element let-item let-index>
+                <div class="hover-pionter receipt-color">
+                
+                <button
+                    mat-icon-button
+                    color="accent"
+                    (click) ="viewInvoiceDialog(element?.receipt_number)"
+                    matTooltip="មើល"
+                    >
+                    <mat-icon>remove_red_eye</mat-icon>
+                </button>
+                <ng-container>
+
+                </ng-container>
+                <!-- <ng-container *ngIf="element?.status_id == 2">
+                    <button class="click-icon" (click)="printInvoice(element)" mat-icon-button color="accent">
+                        <mat-icon style="cursor:pointer; font-size:30px">print</mat-icon>
+                      </button>
+                </ng-container>
+                -->
+                  
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    </div>
+</div>
+

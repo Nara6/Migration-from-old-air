@@ -1,0 +1,37 @@
+- hosts: localhost
+  connection: local
+  tasks:
+  # - name: Ensure a SSH key is present
+  #   community.digitalocean.digital_ocean:
+  #     state: present
+  #     API_TOKEN: dop_v1_0160215b17f294fcfb5bd2f61e92638ba0bb01e3b62814c94887f4f1b72587d2
+  #     command: ssh
+  #     name: my_ssh_key
+  #     ssh_pub_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAZtwbFA8A23TWnoPQBrxNk/W1YVw0kof9ak5bnjdMA3P4Hi8hTJwvnLsIM+1odiCfGm6bPm9rYbPHtPYDilpfNQNPbI/fjDXk4cBUk4apngTZtTyrjCbRAMUvlW7kWbwO4it9gr1ddlo4US0eahRLSfjpG0qKltfs2iwP3uozceUVK9Mw7pRVZRtw7mNV0b/vNHTaxUaMT/+UVGYDWsGPmA3MWAe9JJfwEei5IdQyfkwks5j/jH1Kxfu6UnqomTWR6gYLijtqNQDz++LxvJXdT97eBjjHZC+jCCvRY0iqAMkQ64y/hutdaLXZxQ3XsodTmab0rdyCEov8aFC6f933FdufljNDfRnSZyzKt0czxb+TOtATbFvfYILZ+/RoxEG/WflnosWeD/fM3fcCw7OIfcuUIJ5p6h5PmCwJpR1+rKSb+G46069cf9oNb2BLWHb6V9TUj01+cAGWELFs51e1nqXtUUPjRSwKVpyv7dtUcaJ05pEs+GUjEiedPSYa6R0= macbookair@MacBookAirs-MacBook-Air.local'
+  - name: Create a new Droplet
+    community.digitalocean.digital_ocean_droplet:
+      state: present
+      api_token: dop_v1_0160215b17f294fcfb5bd2f61e92638ba0bb01e3b62814c94887f4f1b72587d2
+      name: ansible-practice-v1
+      size: s-2vcpu-4gb-amd
+      region: sgp1
+      image: ubuntu-20-04-x64
+      wait_timeout: 500
+      ssh_keys: ["a6:af:2d:18:8b:b9:82:ce:03:e2:dd:ac:f2:7c:a9:c9"]
+    register: ansible
+  - name: Ensure a Droplet is present
+    community.digitalocean.digital_ocean_droplet:
+      state: present
+      api_token: dop_v1_0160215b17f294fcfb5bd2f61e92638ba0bb01e3b62814c94887f4f1b72587d2
+      name: node
+      id: "{{ ansible.data.droplet.id }}"
+      size: s-2vcpu-4gb-amd
+      region: sgp1
+      image: ubuntu-20-04-x64
+      wait_timeout: 500
+  - name: Show Droplet info
+    ansible.builtin.debug:
+      msg: |
+        Droplet ID is {{ ansible.data.droplet.id }}
+        First Public IPv4 is {{ (ansible.data.droplet.networks.v4 | selectattr('type', 'equalto', 'public')).0.ip_address | default('<none>', true) }}
+        First Private IPv4 is {{ (ansible.data.droplet.networks.v4 | selectattr('type', 'equalto', 'private')).0.ip_address | default('<none>', true) }}

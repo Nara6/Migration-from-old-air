@@ -1,0 +1,55 @@
+<div >
+    <mat-form-field >
+        <mat-label>ស្វែងរក ឈ្មោះអតិថិជន</mat-label>
+        <input matInput [(ngModel)] = " key "  maxlength="100">
+    </mat-form-field>
+    <button class="click-icon" [disabled]=" isSearching "  (click)="getType()" mat-icon-button color="accent" matTooltip="Add">
+        <mat-icon>search</mat-icon>
+      </button>
+</div>
+
+<mat-dialog-content  class="mat-typography" style="width: 700px;">
+ 
+  <table *ngIf = " customer?.length > 0 "  class="proposal-value-table">
+
+    <thead>
+        <tr>
+        
+            <th class="title">ឈ.រ</th>
+            <th class="title">ឈ្មោះអតិថិជន</th>
+            <th class="title"></th>
+        
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let row of customer; let j = index; " >
+
+            <td > {{ j + 1}}</td>
+            <td >{{ row?.name }} </td>
+            <td class="text-right">
+              <ng-container>
+                <mat-spinner *ngIf = " row?.isLoading " style="margin: auto" diameter=" 30 "></mat-spinner>
+                  <mat-checkbox *ngIf = " !row?.isLoading " [checked]="row?.selected == 1" (change)="select($event, j)"></mat-checkbox>
+              </ng-container>
+            </td>
+
+        </tr>  
+
+    </tbody>
+
+  </table>
+
+  <span *ngIf = " customer?.length == 0 " class="select-message-text hint-text"><span>គ្មានទន្និន័យ</span></span>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <ng-container *ngIf="hasSelect">    
+      <button mat-button (click)="add()"  cdkFocusInitial>ជ្រើសរើស</button>
+    </ng-container>
+    <button mat-button [disabled] = " isSaving " [mat-dialog-close]=" false "  cdkFocusInitial>បិទ</button>
+</mat-dialog-actions>
+

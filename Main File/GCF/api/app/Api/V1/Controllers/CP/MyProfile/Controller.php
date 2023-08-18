@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Api\V1\Controllers\CP\MyProfile;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+use App\CamCyber\FileUpload;
+use App\Api\V1\Controllers\ApiController;
+use App\Model\User\Main;
+
+use App\Model\Admin\Admin as Model;
+use Carbon\Carbon;
+use Dingo\Api\Routing\Helpers;
+use JWTAuth;
+
+class Controller extends ApiController
+{
+    use Helpers;
+    function get(){
+        $auth = JWTAuth::parseToken()->authenticate();
+        $admin = Main::select('id','uid','name','phone','email','avatar')->where('id', $auth->id)->first();
+        return response()->json($admin, 200);
+    }
+    
+    function put(Request $request){
+         $user_id = JWTAuth::parseToken()->authenticate()->id;
+
+        $this->validate($request, [
+            'name' => 'required|max:60',
+            'phone' =>  [
+                            'required', 
+                            'regex:/(^[0][0-9].{7}$)|(^[0][0-9].{8}$)/', 
+                            Rule::unique('user')->ignore($user_id)
+                        ],
+        ]);
+
+        //========================================================>>>> Start to update user
+        $user = Main::findOrFail($user_id);
+        $user->name = $request->input('name');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->updated_at = now();
+        //Start to upload image to that director
+        $date_today = Carbon::today()->format('d').'-'.Carbon::today()->format('M').'-'.Carbon::today()->format('Y');    
+        if($request->avatar != 'null'){
+            $image     = FileUpload::uploadFileV2( $request->avatar, 'my-profile/'.$date_today , '');
+            if($image){
+                $user->avatar = $image['url'];
+            }
+        }
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'ការកែបានជោគជ័យ!', 
+            'data' => $user
+        ], 200);
+
+    }
+  
+    function changePassword(Request $request){
+        $old_password = $request->input('old_password');
+        $user_id = JWTAuth::parseToken()->authenticate()->id;
+        //dd($user_id);
+       $current_password = Main::find($user_id)->password;
+        
+
+       if (password_verify($old_password, $current_password)){ 
+            
+            $this->validate($request, [
+                            'password'         => 'required|min:6|max:18',
+                            'confirm_password' => 'required|same:password',
+            ]);
+
+            $id=0;
+            //========================================================>>>> Start to update user
+            $user = Main::findOrFail($user_id);
+            $user->password = bcrypt($request->input('password'));
+            $user->save();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'ការកែបានជោគជ័យ!'
+            ], 200);
+        }else{
+         return response()->json([
+                'status' => 'error',
+                'message' => 'ពាក្យសម្ងាត់ចាស់របស់អ្នកមិនត្រឹមត្រូវ។ សូមបន្ថែមមួយផ្សេងទៀត'
+            ], 200);   
+        }
+        
+
+    }
+
+}

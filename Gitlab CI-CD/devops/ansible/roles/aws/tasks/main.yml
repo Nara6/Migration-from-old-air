@@ -1,0 +1,34 @@
+---
+# tasks file for aws
+- name: Install efs-utils prerequisites
+  package:
+    name: binutils
+    state: present
+
+- name: create tmp dir
+  file:
+    mode: 0755
+    path: /tmp/efs-utils
+    state: directory
+
+- name: clone efs-utils
+  git:
+    repo: https://github.com/aws/efs-utils
+    dest: /tmp/efs-utils
+
+- name: Build deb packages from the aws/efs-utils code
+  command: ./build-deb.sh
+  args:
+    chdir: /tmp/efs-utils
+    creates: /tmp/efs-utils/build
+
+- name: Find all aws/efs-utils deb packages that were built
+  ansible.builtin.find:
+    paths: /tmp/efs-utils/build
+    patterns: "amazon-efs-utils*.deb"
+  register: find_result
+
+- name: Install aws/efs-utils deb packages
+  apt:
+    deb: "{{ item }}"
+  loop: "{{ find_result | json_query('files[*].path') }}"

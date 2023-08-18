@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="flex justify-center items-center h-[700px]">
+    <div class="container w-[400px] h-[600px] bg-gray-300 border-[5px] border-black shadow-xl shadow-blue-400 flex flex-col justify-center items-center gap-[20px]">
+        <div class="counter font-bold font-serif tracking-widest text-[30px] text-sky-900">
+            Counter
+        </div>
+
+        <div class="number text-[80px] text-green-800" id="number">
+        </div>
+
+        <div class="button flex gap-5">
+            <button id="decrease" class="border-2 border-gray-700 px-[10px] rounded-md bg-gray-200">DECREASE</button>
+            <button id="reset" class="border-2 border-gray-700 px-[10px] rounded-md bg-gray-200">RESET</button>
+            <button id="increase" class="border-2 border-gray-900 px-[10px] rounded-md bg-gray-900 text-gray-300">INCREASE</button>
+        </div>
+
+    </div>
+    <script>
+        class Counter{
+            number=0;
+            constructor(){
+                document.getElementById("number").innerHTML = localStorage.getItem("counter");
+                this.number= localStorage.getItem("counter");
+            }
+            count(){
+                this.number++;
+                return this.number;
+            }
+            reset(){
+                this.number=0;
+                return this.number;
+
+            }
+            decrease(){
+                this.number--;
+                return this.number;
+
+            }
+        }
+        const btnIncrease = document.getElementById("increase");
+        const btnDecrease = document.getElementById("decrease");
+        const btnReset = document.getElementById("reset");
+        var counter = new Counter();
+        function increase(){
+            localStorage.setItem("counter", counter.count());
+            document.getElementById("number").innerHTML = localStorage.getItem("counter");
+        }
+        function decrease(){
+            localStorage.setItem("counter", counter.decrease());
+            document.getElementById("number").innerHTML = localStorage.getItem("counter");
+        }
+        function reset(){
+            localStorage.setItem("counter", counter.reset());
+            document.getElementById("number").innerHTML = localStorage.getItem("counter");
+        }
+
+        btnIncrease.addEventListener("click",increase);
+        btnDecrease.addEventListener("click",decrease);
+        btnReset.addEventListener("click",reset);
+
+
+    </script>
+</body>
+</html>

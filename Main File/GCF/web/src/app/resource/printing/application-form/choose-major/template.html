@@ -1,0 +1,107 @@
+<!-- ===================== Header =================== -->
+<section class="body-scheme2 ">
+  <div class="formFill_2">
+    <div class="title_2">
+       <p class="bold"><u><span class="bolder">ការជ្រើសរើសមុខវិជ្ជាសិក្សា​​​​​៖</span></u></p>
+       <p class="bold"><span class="bolder">១០-ខ្ញុំបាទ/នាងសុំចូលរៀនថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់សម្រាប់ឆ្នាំសិក្សា<span class="hanuman">(Academic Year):</span></span></p>
+       <p class="bold"><span class="bolder">១១-​សូមគូសសញ្ញា &#10004; ដើម្បីជ្រើសរើសមុខវិជ្ជាឯកទេស<span class="hanuman">(Please put &#10004; in box):</span></span></p>
+       <div class="selectMajor">
+           
+         <tr *ngFor="let row of data?.major?.available; let i = index; " [attr.data-index]="i" [ngClass]="{'selected': row?.selected }" >
+         
+         <div class="title_2">
+            <span>&emsp; &#9658;  {{ row?.major?.kh_name }}  <span class="hanuman">({{ row?.major?.en_name }})</span>&nbsp;&nbsp;</span> <br/>
+         </div>
+   
+         <td style="border: 0px;">               
+            <span *ngIf = " row?.id != data?.major?.selected?.id " >
+               <mat-icon>check_box_outline_blank</mat-icon>
+            </span>
+            <span  *ngIf = " row?.id == data?.major?.selected?.id ">
+               <mat-icon>check_box</mat-icon>
+            </span>       
+         </td>
+         </tr>
+           
+       </div>
+       <p class="bold"><span class="bolder">១២-​សូមគូសសញ្ញា &#10004; ដើម្បីជ្រើសរើស<span class="hanuman">(Please put &#10004; in box):</span></span></p>
+       <p> &emsp; &#9658; ​ការសិក្សារបស់ខ្ញុំបាទ/នាងខ្ញុំឧបត្ថមដោយ​<span class="hanuman">(My study is sponsored by):</span></p>
+       <p>  &emsp; &emsp; &#9675; ​ផ្ទាល់ខ្លួន​<span class="hanuman">(Self-supported):...................................................................................................................................................</span>
+         <ng-container >  
+               <span *ngIf="data?.major?.financial_support?.is_self_supported =='0' ">
+                  <mat-icon >check_box_outline_blank</mat-icon>
+               </span>
+               <span *ngIf="data?.major?.financial_support?.is_self_supported =='1' ">
+                  <mat-icon>check_box </mat-icon>
+               </span>
+               
+            </ng-container>
+       </p>
+       <p>  &emsp; &emsp; &#9675; ​អង្គការ ឬអង្គភាព សូមសរសេរបញ្ជាក់​<span class="hanuman">(Organization or Institute, please write down):.................. </span>
+         <ng-container >  
+            <span *ngIf="data?.major?.financial_support?.is_self_supported == '1' ">
+               <mat-icon >check_box_outline_blank</mat-icon>
+            </span>
+            <span *ngIf="data?.major?.financial_support?.is_self_supported == '0' ">
+               <mat-icon>check_box </mat-icon>
+            </span>
+            
+         </ng-container>
+       </p>
+       <span class="title_2" >
+            <p> &nbsp; &nbsp; &#9642; ​ ឈ្មោះអង្គការ ឬអង្គភាព<span class="hanuman">(Organization or Institute Name):  </span><span class="loop">{{ data?.major?.financial_support?.supported_organization_name }}</span></p>
+            <p> &nbsp; &nbsp; &#9642; ​ អាសយដ្ឋាន​ <span class="hanuman">(Address): </span><span class="loop">{{ data?.major?.financial_support?.supported_organization_address }}</span></p>
+            <p> &nbsp; &nbsp; &#9642; ​ ឈ្មោះអ្នកទទួលខុសត្រូវផ្ទាល់សម្រាប់ទំនាក់ទំនង<span class="hanuman">(Name of Supervisor): </span><span class="loop">{{ data?.major?.financial_support?.supported_organization_supervisor_name }}</span></p>
+            <p>  &nbsp; &nbsp; &nbsp; &nbsp;ទូរស័ព្ទ​<span class="hanuman">(Phone):&nbsp; &nbsp; &nbsp;</span><span class="loop">{{ data?.major?.financial_support?.supported_organization_supervisor_phone }}  &nbsp; &nbsp; &nbsp;</span> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;អុីម៉េល <span class="hanuman">(Email): </span><span class="loop">{{ data?.major?.financial_support?.supported_organization_supervisor_email }}</span></p>  
+       </span>
+        <p class="bold"><span class="bolder">១៣-សូមភ្ជាប់មកជាមួយនូវឯកសារដូចខាងក្រោមនេះ <span class="hanuman">(Please attach with the following documents): </span></span></p>
+       <div>
+           
+         <tr *ngFor="let row of data?.attachment?.attachments; let i = index; " [attr.data-index]="i" >
+         
+         <div class="title_2">
+            <span>&emsp; &#9679;  {{ row?.attachment?.kh_name }}&nbsp;&nbsp;</span> <br>
+            <span>&nbsp;&nbsp;<span class="hanuman">({{ row?.attachment?.en_name}})</span>&nbsp;&nbsp;</span> <br>
+         </div>
+   
+         <td style="border: 0px;">               
+            <span>{{ row?.attachment?.n_of_required_copies }} {{ row?.attachment?.unit }}</span>     
+         </td>
+         </tr>
+       </div>
+    </div>
+ </div> 
+
+ <div class="formFill_3">
+  <div class="title_2">
+     <p class="bold"><span class="bolder">១៤-អាសយដ្ឋានសម្រាប់ទំនាក់ទំនងបន្ទាន់ <span class="hanuman">(Emergency Contact Address): </span></span></p>
+     <p> &emsp; &#9679; ​ឈ្មោះ <span class="hanuman">(Name):&nbsp; &nbsp; &nbsp;<span class="loop"> {{ data?.general_info?.emergency_contact?.emergency_contact_name }} </span></span>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;ត្រូវជា<span class="hanuman">(In relationship with):&nbsp; &nbsp; &nbsp;<span class="loop"> {{ data?.general_info?.emergency_contact?.emergency_contact_relationship }} </span></span></p>
+     <p> &emsp; &#9679; ទូរស័ព្ទ​ <span class="hanuman">(Phone):&nbsp; &nbsp; &nbsp;<span class="loop"> {{ data?.general_info?.emergency_contact?.emergency_contact_phone }} </span></span>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;អុីម៉េល<span class="hanuman">(Email):&nbsp; &nbsp; &nbsp;<span class="loop"> {{ data?.general_info?.emergency_contact?.emergency_contact_email }} </span></span></p>
+     <p class="bold"><span class="bolder">១៥-ខ្ញុំបាទ/នាងខ្ញុំសូមសន្យាថា ព័ត៍មានដែលផ្តល់ឲ្យក្នុងពាក្យសុំចូលរៀនពិតជាត្រឹមត្រូវទាំងស្រុង​​ ហើយ</span></p>
+     <p class="bold"><span class="bolder">នឹងតាមបទបញ្ជាផ្ទៃក្នុងរបស់សាលាសុខភាពសាធារណៈឱ្យបានត្រឹមត្រូវ។ ក្នុងករណី ខ្ញុំបាទ/នាងខ្ញុំ បាន</span></p>
+     <p class="bold"><span class="bolder">ផ្តល់ព័ត៍មានមិនពិត និងប្រព្រឹត្តិខុសដោយប្រការណាមួយ ខ្ញុំបាទ/ នាងខ្ញុំ សូមទទួលខុសត្រូវចំពោះមុខ</span></p>
+     <p class="bold"><span class="bolder">ច្បាប់។  <span class="hanuman">(I assure that all​information in the enrollment application form is completely true, and I shall</span></span></p>
+     <p class="bold">​<span class="bolder"><span class="hanuman">adhere to the regulations and rules set by the​School of Public Health.​ I understand that if false</span></span></p>
+     <p class="bold"><span class="bolder"><span class="hanuman">information given, harmful performance and moral misconduct shall be subject to the rules of law of the country.)</span></span></p>
+     <p class="bold"><span class="bolder"><u>កំណត់សម្គាល់&nbsp;<span class="hanuman">(Note)</span></u>: រាល់ការផ្លស់ប្តូរអាសយដ្ឋាបន្ទាន់របស់និស្សិតត្រូវផ្តល់ដំណឹងមករដ្ឋបាលសាលា-</span></p>
+     <p class="bold"><span class="bolder">សុខភាពសាធារណៈ​ នៃវិទ្យាស្ថានជាតិសុខភាពសាធារណៈជាចាំបាច់។ <span class="hanuman">(Every student must notify and</span></span></p>
+     <p class="bold"><span class="bolder"><span class="hanuman">report to NIPH-SPH’s Administration Officer for any change of emergency contact as soon as possible.)</span></span></p>
+     <div class="formSign">
+        <p class="bold"></p>
+        <p class="bold"> ថ្ងៃ................ខែ.....ឆ្នាំជូត ទោស័ក ព.ស ២៥៦៤ <br></p>
+     </div>
+     <div class="formSign">
+        <p class="bold"></p>
+        <p class="bold"> ធ្វើនៅ........................ថ្ងៃទី....ខែ...ឆ្នាំ២០២១</p>
+     </div>
+     <div class="formSign">
+        <p class="bold"></p>
+        <p class="bold"> ហត្ថលេខានិងឈ្មោះសមីខ្លួន</p>
+     </div>
+  </div>
+</div>
+
+
+
+
+</section>

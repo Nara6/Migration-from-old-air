@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'ssh -o StrictHostKeyChecking=no root@159.65.4.181 "cd /apps/backend/api;\
+                git pull;\
+                cd ansible;\
+                TAG=${BUILD_NUMBER} ansible-playbook docker-deployment-playbook.yml;\
+                "'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Test'
+            }
+        }
+        stage('Deploy UAT') {
+            steps {
+                echo 'Deploy UAT'
+            }
+        }
+        stage('Deploy Prod') {
+            steps {
+                echo 'Deploy Prod'
+            }
+        }
+    }
+}

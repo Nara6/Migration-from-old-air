@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        </style>
+</head>
+<body>
+    <div class="w-full h-[900px] bg-pink-300 flex justify-center">
+        <div class="w-[500px] h-[700px] bg-white">
+            <div class="flex ml-2 mt-2">
+                <img src="https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-4/64/__profile_account_user-512.png" alt="Profile" class="w-10 h-10 rounded-full mr-2">
+                <div class="flex-col">
+                    <div class="flex-row">
+                            <div class="flex">
+                                <span class="text-blue-500">Friend Name</span>
+                                <img src="https://cdn0.iconfinder.com/data/icons/user-interface-16x16-vol-1/16/more-horizontal-512.png" alt="more" class="w-4 h-4 right-[480px] absolute top-3">
+                            </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="text-gray-400 text-xs">Today at 19:33.</div>
+                    </div>
+                    
+                </div>
+                <img src="https://img.icons8.com/material-rounded/512/globe.png" alt="public" class="w-4 h-4 self-end">
+            </div>
+            <div class="ml-2">
+                I want this mock up so bad.
+            </div>
+            <div class="ml-2">
+                <span>Found it at <a href="http://marinad.com.ar" style="color:rgb(59, 130, 246)">http://marinad.com.ar</a></span>
+            </div>
+            <div class="ml-2 text-blue-500">See translation</div>
+            <div class="m-auto bg-blue-500 w-[480px] h-[500px]"></div>
+            <div class="flex flex-row ml-[50px] mr-[50px] mt-2">
+                <span class="material-symbols-outlined">thumb_up</span>
+                <span class="mr-[90px]">Like</span>
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="mr-[90px]">Comment</span>
+                <span class="material-symbols-outlined">google_plus_reshare</span>
+                <span class="mb-2">Share</span>
+            </div>
+            <div class="bg-gray-100 w-full h-[100px]">
+                <div class="ml-2 flex">
+                    <div class="mt-2 flex">
+                        <img src="https://cdn0.iconfinder.com/data/icons/social-reaction-and-emoji/519/like-512.png" class="w-6 h-6" alt="like">
+                        <img src="https://cdn0.iconfinder.com/data/icons/social-reaction-and-emoji/519/love-512.png" class="w-6 h-6" alt="love">
+                        <img src="https://cdn0.iconfinder.com/data/icons/social-reaction-and-emoji/519/wow-512.png" class="w-6 h-6" alt="love">
+                        <span class="text-[12px] text-blue-400 self-center ml-2">1.035</span>
+                    </div>
+                </div>
+                <form class="flex relative mt-3 mr-2 w-full">
+                        <img src="https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-4/64/__profile_account_user-512.png" alt="Profile" class="w-10 h-10 rounded-full mr-2 ml-2">
+                        <div class="flex absolute right-5 top-1">
+                            <span class="material-symbols-outlined m-1">sentiment_satisfied</span>
+                            <span class="material-symbols-outlined m-1">photo_camera</span>
+                            <span class="material-symbols-outlined m-1">gif_box</span>
+                            <span class="material-symbols-outlined m-1">add_reaction</span>
+                        </div>
+                        <input type="text" id="comment" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full pl-3 p-2.5  dark:bg-white dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write something...">
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

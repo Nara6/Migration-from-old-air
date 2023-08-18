@@ -1,0 +1,70 @@
+version: "3.7"
+services:
+
+    #==============================================>> Database
+    db:
+        image: mysql:5.7.22
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "1027:3306"
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQl_USER: homestead
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: secret
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./db/mysql:/var/lib/mysql
+        networks:
+            - nara
+    api:
+        container_name: api
+        build:
+            context: ./api/.
+            dockerfile: Dockerfile
+        volumes:
+            - ./api/app:/var/www/app
+            - ./api/resources:/var/www/resources
+            - ./api/routes:/var/www/routes
+            - ./api/storage:/var/www/storage
+            - ./api/database:/var/www/database
+        # command: php artisan --host=0.0.0.0 serve
+        ports:
+            - "1026:8000"
+        environment:
+            DB_HOST: 35.186.150.74
+            DB_PORT: 1027
+            DB_DATABASE: e-commerce
+            DB_USERNAME: root
+            DB_PASSWORD: secret
+            # TELEGRAM_BOT_TOKEN: 2069021660:AAH6x1BFZaeZ5AEnVtMKv4qf2GOBMO6j_tw
+        networks:
+            - nara
+    #==============================================>> Web
+    web:
+        container_name: web
+        build:
+            context: ./web/.
+            dockerfile: Dockerfile
+        volumes:
+            - ./web/dist/fuse:/var/www/hmtl/dist/fuse
+        ports:
+            - "1024:5173"
+    #     networks:
+    #         - nara
+    # web_admin:
+    #     container_name: web_admin
+    #     build:
+    #         context: ./admin/.
+    #         dockerfile: Dockerfile
+    #     volumes:
+    #         - ./admin/dist/:/var/www/hmtl/dist/
+    #     ports:
+    #         - "1025:3000"
+    #     networks:
+    #         - nara
+networks:
+    nara:

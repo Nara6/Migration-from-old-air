@@ -1,0 +1,52 @@
+<div class="content" [style.width]=" '700px' ">
+  <b>ឈ្មោះអគារ: {{data.name}}</b>
+  <div class="tab-content p-24">
+    <section class="listing">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>លរ.​​​</th>
+            <th>ឈ្មោះបន្ទប់</th>
+            <th>ជាន់</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of data?.rooms; let i = index; "[attr.data-index]="i" >
+            <td>{{i + 1}}</td>
+            <td>{{row?.name}}</td>
+            <td><b style="color: blue;">{{row?.floor}}</b></td>
+          </tr>
+        </tbody>
+      </table>
+      <div fxLayoutAlign="center center">
+        <tr *ngIf=" data?.n_of_teacherCourses == 0 " class="text-center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-icon
+              role="img"
+              class="
+                mat-icon
+                notranslate
+                s-100
+                mb-16
+                select-message-icon
+                hint-text
+                material-icons
+                mat-icon-no-color
+              "
+              aria-hidden="true"
+            >
+              toc
+            </mat-icon>
+            <span class="select-message-text hint-text"
+              ><span>គ្មានទន្និន័យ</span></span
+            >
+          </div>
+        </tr>
+      </div>
+    </section>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button [disabled] = " isSaving "  [mat-dialog-close]=" dataHasChanged " cdkFocusInitial>បិទ</button>
+</mat-dialog-actions>

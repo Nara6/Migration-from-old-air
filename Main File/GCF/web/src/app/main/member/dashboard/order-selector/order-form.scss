@@ -1,0 +1,57 @@
+.distributor-table{
+    width: 100%;
+    border: none;
+    border-spacing: 0;
+    text-align: left;
+    
+
+    thead{
+        tr{
+            th{
+                vertical-align: middle !important;
+                border: 1px solid #959dad2b;
+                height: 33px;
+                padding: 0px; 
+                white-space: nowrap;
+                color:green;
+                background:#0096888a; 
+
+                
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
+                }
+
+               
+            }
+
+          
+        }
+    }
+
+    tbody{
+        color:grey;
+        tr{
+            td{
+                border: 1px solid #959dad2b;
+                padding: 16px 8px;
+                cursor: pointer; 
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
+                }
+            }
+
+           
+           
+        }
+    }
+}

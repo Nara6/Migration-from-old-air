@@ -1,0 +1,82 @@
+<div class="content-cnt page-layout blank">
+  <div class="header p-24 h-80" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="50">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="secondary-text s-18">home</mat-icon>
+        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+        <span class="secondary-text"> Province </span>
+      </div>
+    </div>
+    <div fxFlex="30" fxLayoutAlign="end" >
+      <mat-spinner
+        *ngIf=" isMigrating "
+        style="margin: auto"
+        diameter=" 30 "
+      ></mat-spinner>
+      <button
+        mat-stroked-button
+        *ngIf=" !isMigrating "
+        color="accent"
+        (click)=" confirmMigrate() "
+      >
+        <mat-icon class="material-icons">add</mat-icon><span>Migrate</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tab-content p-24">
+      <section class="listing">
+        <div *ngIf=" isSearching ">
+          <mat-spinner style="margin: auto" diameter=" 50 "></mat-spinner>
+          <div fxLayoutAlign="center center"class="text-center">
+            <div fxLayout="row" fxLayoutAlign="center" fxflex *ngIf=" isSearching ">
+                <span class="p-100 load-text-color">កំពុងទាញទិន្នន័យ...</span>
+            </div>
+          </div>         
+        </div>
+
+        <table *ngIf=" !isSearching " class="custom-table">
+          <thead>
+            <tr>
+              <th>​​​ លេខ.</th>
+              <th class="text-right">ឈ្មោះខេត្ត</th>
+              <th class="text-right">ចំនួនស្រុក</th>
+              <th class="text-right">ចំនួនឃុំ</th>
+              <th class="text-right">ចំនួនភូមិ</th>
+              <th class="text-right"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let row of data; let i = index; " [attr.data-index]="i">
+              <td>{{ i + 1 }}</td>
+              <td class="text-right"><b>{{ row?.kh_name}}</b></td>
+              <td class="text-right">{{ row?.n_of_districts }}</td>
+              <td class="text-right">{{ row?.n_of_communes }}</td>
+              <td class="text-right">{{ row?.n_of_villages }}</td>
+              <td class="text-right">
+                <button
+                  mat-icon-button
+                  color="accent"
+                  (click)="viewDistrict(row)"
+                  matTooltip="View District"
+                >
+                  <mat-icon>list</mat-icon>
+                </button>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="text-center"><b> សរុប</b></td>
+              <td class="text-right" style="color: blue;"><b>{{nOfDistricts}}</b></td>
+              <td class="text-right" style="color: blue;"><b>{{nOfCommunes}}</b></td>
+              <td class="text-right" style="color: blue;"><b>{{nOfVillages}}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

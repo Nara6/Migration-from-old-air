@@ -1,0 +1,7 @@
+stages:
+  - deploy:camcyber:development
+
+include:
+  - local: 'pipelines/deployment/camcyber-development.gitlab-ci.yml'
+
+

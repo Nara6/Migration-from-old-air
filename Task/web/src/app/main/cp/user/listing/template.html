@@ -1,0 +1,125 @@
+<div class="content-cnt page-layout blank">
+  <div class="header p-24 h-80" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="50">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="secondary-text s-18">home</mat-icon>
+        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+        <span class="secondary-text">អ្នកប្រើប្រាស់</span>
+        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+        <span class="secondary-text">ទាំងអស់
+        </span>
+      </div>
+    </div>
+    <div fxFlex="50" class="text-right">
+      <button
+        mat-stroked-button
+        color="accent"
+        [routerLink]="['/user/all']"
+      >
+        <mat-icon class="material-icons">add</mat-icon><span>បង្កើតថ្មី</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="tab-content p-24">
+
+      <!-- Search -->
+      <section class="filter">
+        <div fxLayout="row"  fxLayoutAlign="start center" >
+              <!-- Search by date -->
+              <mat-form-field class="mr-8">
+                <mat-label> ចាប់ពីថ្ងៃ </mat-label>
+                <input (click)="from_picker.open()" matInput [(ngModel)]="from" [matDatepicker]="from_picker" style = " cursor:pointer " [readonly] = " true ">
+                <mat-datepicker-toggle matSuffix [for]="from_picker"></mat-datepicker-toggle>
+                <mat-datepicker #from_picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label> ដល់ </mat-label>
+                <input (click)="to_picker.open()" [(ngModel)]="to" matInput [matDatepicker]="to_picker" style = " cursor:pointer " [readonly] = " true " [min]="from">
+                <mat-datepicker-toggle matSuffix [for]="to_picker"></mat-datepicker-toggle>
+                <mat-datepicker #to_picker></mat-datepicker>
+            </mat-form-field>
+            
+            <!-- Search by name -->
+            <mat-form-field class="p-16">
+              <mat-label > ឈ្មោះ ឬ លេខទូរសព្ទ </mat-label>
+              <input matInput [(ngModel)]=" key ">
+          </mat-form-field>
+          <!-- Button Search -->
+          <div fxFlex>
+            <button [disabled] = " isSearching " mat-icon-button (click)=" listing ()"   mat-fab color="blue" mat-mini-fab  > <mat-icon  >search</mat-icon></button> &nbsp;             
+            <button  mat-icon-button color="accent"   mat-fab color="accent" mat-mini-fab  matTooltip="Print Invoice">
+                <mat-icon>print</mat-icon>
+            </button>
+        </div> 
+        </div>
+      </section>
+
+      <section class="listing">
+        <div *ngIf=" isSearching ">
+          <mat-spinner style="margin: auto" diameter=" 70 "></mat-spinner>
+        </div>
+
+        <table  *ngIf=" data?.length > 0 && !isSearching " class="custom-table">
+          <thead>
+            <tr>
+              <th>ល.រ</th>
+              <th>ឈ្មោះ</th>  
+              <th>លេខទូរសព្ទ</th>      
+              <th>អ៊ីម៉ែល</th>
+              <th>ការកែប្រែចុងក្រោយ</th>
+              <th></th>         
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of data; let i = index; " [attr.data-index]="i">
+              <td>{{ i+1 }}</td>
+              <td>{{ row?.name }}</td>
+              <td>{{row?.phone}}</td>
+              <td>{{row?.email}}</td>                       
+              <td> {{ row?.updated_at }}</td>
+              <td class="text-right">
+                <button
+                mat-icon-button
+                matTooltip="ផ្លាស់ប្តូរពាក្យសម្ងាត់"
+                (click)="changePassword(row)"
+                color="accent"
+              >
+                <mat-icon>vpn_key</mat-icon>
+              </button>
+                <button
+                mat-icon-button
+                matTooltip="កែប្រែ"
+                [routerLink]="['/cp/user/'+row?.id]"
+                color="accent"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                matTooltip="លុប"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          <ng-container *ngIf=" data?.length == 0 && !isSearching ">
+            <div fxLayout="column" fxLayoutAlign="center center" fxflex>
+                <mat-icon role="img" class="mat-icon notranslate s-100 mb-16 select-message-icon hint-text material-icons mat-icon-no-color" aria-hidden="true"> toc </mat-icon>
+                <span class="select-message-text hint-text"><span>No Data</span></span>
+            </div>
+        </ng-container>
+        </section>
+        <div fxLayoutAlign="end end">
+          <tr *ngIf=" data?.length != 0 && !isSearching " style="align-content: flex-end">
+            <app-paginator >
+            </app-paginator>
+          </tr>
+        </div>
+    </div>
+  </div>
+</div>

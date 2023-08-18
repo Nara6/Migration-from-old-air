@@ -1,0 +1,19 @@
+<div class="p-8 m-8" style="border: 1px solid #80808047; cursor: pointer" (click) = " onOutput() " >
+    <div class="text-center mb-8" style="border-bottom: 1px solid #80808047;" >
+        <span>{{ data?.name }}</span>
+    </div>
+    <div>
+        <!-- <img [src] = " 'http://128.199.197.254:8001/'+data?.image " /> -->
+        <img [src] = " fs.imgSrc(data?.image) " style="width:300; height: 230px; margin: 10px 0;"/><br>
+        
+    </div>
+    
+    <div fxLayout="row" class=" mt-8 pt-8" style="border-top: 1px solid #80808047;" >
+        <div style="flex: 2 1 0%;box-sizing: border-box;">
+            {{ data?.unit_price | number }} រៀល {{ data?.unit?.name }}
+        </div>
+        <div fxFlex class="text-right" >
+            <mat-icon class="secondary-text s-30">add_shopping_cart</mat-icon>
+        </div>
+    </div>
+</div>

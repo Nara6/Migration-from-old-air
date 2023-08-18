@@ -1,0 +1,77 @@
+@import "src/@fuse/scss/fuse";
+
+toolbar {
+  //  position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    z-index: 4;
+
+    &.below {
+        z-index: 2;
+    }
+
+    .mat-toolbar {
+        //position: relative;
+        position: fixed;
+        background: inherit !important;
+        color: inherit !important;
+    }
+
+    .nenu-icon-color{
+        color: white;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            width: 38px;
+        }
+    }
+
+    .user-button,
+    fuse-search-bar,
+    .language-button,
+    .chat-panel-toggle-button,
+    .quick-panel-toggle-button {
+        min-width: 64px;
+        height: 64px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+
+    .arrow-down{
+        color: white;
+    }
+
+    .language-title{
+        color: white;
+    }
+    
+    // .navbar-toggle-button {
+    //     min-width: 56px;
+    //     height: 56px;
+    // }
+
+    .toolbar-separator {
+        height: 64px;
+        width: 1px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .margin-right{
+        margin-right: 280px;
+    }
+
+    .update-margin-right{
+        margin-right: 64px;
+    }
+}

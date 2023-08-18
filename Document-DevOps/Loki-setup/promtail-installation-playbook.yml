@@ -1,0 +1,35 @@
+---
+- hosts: grafana
+  tasks:
+    - name: Make directory for promtail
+      ansible.builtin.file:
+        path: /opt/promtail
+        state: directory
+        mode: '0755' 
+    - name: Wget package
+      ansible.builtin.get_url:
+        url: https://github.com/grafana/loki/releases/download/v2.2.1/promtail-linux-amd64.zip
+        dest: /opt/promtail/promtail.gz
+        mode: '0440'
+    - name: unarchive promtail
+      command: "sudo gunzip /opt/promtail/promtail.gz"
+    - name: Execute permission
+      command: "sudo chmod a+x /opt/promtail/promtail"
+    - name: Create a symbolic link to the promtail 
+      command: "sudo ln -s /opt/promtail/promtail /usr/local/bin/promtail"
+    - name: Clone a github repository promtail service
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/promtail.git
+        dest: /root/promtail-service
+        clone: yes
+        update: yes
+    - name: Move promtail servie file to file system
+      command: "mv /root/promtail-service/promtail.service /etc/systemd/system/"
+    - name: Wget package promtail configuration file
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/grafana/loki/main/clients/cmd/promtail/promtail-local-config.yaml
+        dest: /opt/promtail
+        mode: '0440'
+    - name: Start service promtail 
+      command: "sudo service promtail start"
+...

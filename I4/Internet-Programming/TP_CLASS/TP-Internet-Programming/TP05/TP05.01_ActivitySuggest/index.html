@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggest Activity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Mynerve&display=swap" rel="stylesheet">
+    <style>
+        .text{
+            font-family: 'Libre Franklin', sans-serif;
+            font-family: 'Mynerve', cursive;
+            font-size: 50px;
+        }
+        .button{
+            font-family: 'Libre Franklin', sans-serif;
+            font-family: 'Mynerve', cursive;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-red-200 to-zinc-300 flex justify-center items-center h-screen">
+    <div class="gap-7 flex items-center flex-col">
+        <img class="w-[100px]" src="https://em-content.zobj.net/source/noto-emoji-animations/344/unamused-face_1f612.gif" alt="">
+        <div class="text pt-0">Are you boring?</div>
+        <div onclick="getActivity()" class="button w-[250px] p-4 bg-blue-400 text-center text-white rounded-xl hover:cursor-pointer hover:from-pink-500 hover:to-yellow-500 hover:bg-gradient-to-r">Tell me what to do</div>
+        <div role="status" hidden id="loading">
+            <svg aria-hidden="true" class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="suggetion-data w-[400px] h-auto hidden flex-col gap-y-4 text-[20px]" id="suggest-data">
+            <div id="activity" class="text-center font-bold mb-2">
+
+            </div>
+            <div  class="flex gap-4">
+                <img src="https://img.icons8.com/fluency/256/price-tag.png" alt="" class="w-[25px] h-[25px]">
+                <span>Type:</span>
+                <span id="type"></span>
+            </div>
+            <div class="flex gap-4">
+                <img src="https://img.icons8.com/fluency/256/conference-foreground-selected.png" alt="" class="w-[25px] h-[25px]"">
+                <span>Participants:</span>
+                <span id="participant"></span>
+
+            </div>
+            <div class="flex gap-4">
+                <img src="https://img.icons8.com/ultraviolet/256/us-dollar-circled.png" alt="" class="w-[25px] h-[25px]"" >
+                <span>Price:</span>
+                <span id="price"></span>
+
+            </div>
+            <div class="flex gap-4">
+                <img src="https://img.icons8.com/fluency/256/chain.png" alt="" class="w-[25px] h-[25px]"">
+                <span>Link:</span>
+                <a id="link" target="_blank" class="text-blue-700"></a>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const activityName = document.getElementById("activity");
+        const participant = document.getElementById("participant");
+        const price = document.getElementById("price");
+        const type = document.getElementById("type");
+        const link = document.getElementById("link");
+        const loading = document.getElementById("loading");
+        const data = document.getElementById("suggest-data");
+
+        function getActivity(){
+            loading.hidden = false;
+            data.style.display="none";
+            fetch("https://www.boredapi.com/api/activity").then(async (res)=>{
+                const data = await res.json();
+                activityName.innerHTML = data['activity'];
+                type.innerHTML = data['type'];
+                participant.innerHTML = data['participants'];
+                price.innerHTML = `<div>${data['price']}$</div>`;
+                link.innerHTML = data['link'];
+                link.href = data['link'];
+            }).finally(()=>{
+                loading.hidden = true;
+                data.style.display="flex";
+            })
+        } 
+    </script>
+</body>
+</html>

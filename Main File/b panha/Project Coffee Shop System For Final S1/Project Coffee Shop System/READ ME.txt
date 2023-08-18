@@ -1,0 +1,25 @@
+   ***** NOTE TO RUN PROGRAM *****
+
++ ALL CODE AND FILE'S DATA MUST BE IN THE SAME DIRECTORY OR FOLDER
+
+----------------------------
+   ***** PASSWORD FOR LOGIN *****
+
+1. STOCK ADMINISTRATION : OurCoffee168
+2. EMPLOYEE ADMINISTRATION : OurCoffeeA4
+
+----------------------------
+   ***** TEAM *****
+
+ Student of ITC department GIC Year 3(2020-2021)
++ HANG MONYRATANAK
++ HAI MENGKOUNG
++ HEL SOKHENG
++ HAL SOKHEANG
++ HAN KIMHAK
++ HEANG SOPAGNA
+
+-----------------------------
++  We appriciate that you spend your time to run our program and hope you like it. 
++  If there are any problem or something gone wrongs, please give us a feedback for improve our work. 
++  finally we really thankful for your time and feedback.

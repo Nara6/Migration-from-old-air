@@ -1,0 +1,13 @@
+---
+- hosts: grafana
+  tasks: 
+    - name: Clone a github repository
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/nginx-http.git
+        dest: /root/nginx-http
+        clone: yes
+        update: yes
+    - name: Move nginx configuration file
+      command: "sudo mv /root/nginx-http/nginx.yinsoknara.tech.conf /etc/nginx/conf.d/"
+    - name: Reload nginx 
+      command: "systemctl reload nginx"

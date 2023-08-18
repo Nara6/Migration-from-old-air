@@ -1,0 +1,68 @@
+.content-cnt{
+    
+    width:100% !important; 
+    margin-top:0px; 
+    .content{
+       
+        // background-color: #0831a3 ;
+        .section-title{
+            color:green; 
+        }
+        .widget-group{
+            width:100% !important; 
+            .fuse-card{
+                .title{
+                    color:#0831a3 ; 
+                }
+                .img{
+                    height: 200px;
+                    background-size: contain;
+                }
+                .key{
+                    color:grey; 
+                    font-size: 12px;
+                }
+
+            }
+        }
+        .tab-content{
+            .account-item{
+                mat-icon{
+                    background: #00b938;
+                    color: white;
+                }
+                b{
+                    color: grey;
+                }
+               
+            }
+        }
+    }
+    .upcoming{
+        padding: 10px;
+         background: #56ab2f;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color:white;
+    }
+    .due{
+        padding: 10px;background: #e96443;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to left, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to left, #904e95, #e96443); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+           color: white;
+    }
+    .event{
+        padding: 10px;background: #83a4d4;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to left, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to left, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */          
+           color: white;
+    }
+    .document{
+        padding: 10px;background: #67B26F;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to left, #4ca2cd, #67B26F);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to left, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+           color: white;
+    }
+  
+ 
+}

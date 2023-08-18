@@ -1,0 +1,10 @@
+
+deploy:camcyber:development:
+  stage: deploy:camcyber:development
+  environment:
+    name: 'CamCyber/Development'
+    url: http://localhost
+  script:
+    - pwd
+  only:
+    - develop

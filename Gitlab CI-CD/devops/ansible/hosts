@@ -1,0 +1,10 @@
+[camcyber_bastion]
+camcyber_dev
+
+# hosts that not yet have gitlab runner installed only
+[new_registered_servers]
+camcyber_cicd
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+

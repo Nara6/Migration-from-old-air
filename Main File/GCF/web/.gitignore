@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+node_modules
+=======
+# Logs
+logs
+*.log
+
+# System Files
+.DS_Store
+._.DS_Store
+Thumbs.db
+
+# Dependency directory
+node_modules
+bower_components/
+
+# Linter
+linters/
+
+# testing
+/coverage
+
+# compiled output
+/build
+/Release
+# //dist
+/dll
+.tmp
+documentation/*.html
+/.history
+
+# misc
+.env
+
+enviroments
+.history/src/environments/environment_20191126232208.ts
+>>>>>>> a0da604e199e7a72062c19d13aef7142392b5311

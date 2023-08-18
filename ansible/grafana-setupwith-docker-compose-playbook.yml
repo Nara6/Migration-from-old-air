@@ -1,0 +1,31 @@
+---
+- name: Grafana full set up with loki&prometheus
+  hosts: grafana
+  become: yes
+  gather_facts: False
+  tasks:
+    - name: Pulling Docker-Compose
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/Grafana-Docker-compose.git
+        dest: /Grafana
+        separate_git_dir: /Grafana/Grafana-Docker-compose.git
+    - name: Clone prometheus configuration file
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/prometheus-config.git
+        dest: /Grafana/prometheus
+        separate_git_dir: /Grafana/prometheus-config.git
+    - name: Clone Loki configuration file
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/loki-local-config.git
+        dest: /Grafana/loki
+        separate_git_dir: /Grafana/loki/loki-local-config.git
+    - name: Clone Promtail configuration file
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/promtail-local-config.git
+        dest: /Grafana/promtail
+        separate_git_dir: /Grafana/promtail/promtail-local-config.git
+    - name: Create and start services
+      docker_compose:
+        project_src: /Grafana
+      register: output
+...

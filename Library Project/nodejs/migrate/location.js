@@ -1,0 +1,96 @@
+const location = require("../src/models/location");
+const data = [
+  {
+    block:"A",
+    shelf:"1"
+  },
+  {
+    block:"A",
+    shelf:"2"
+  },
+  {
+    block:"A",
+    shelf:"3"
+  },
+  {
+    block:"B",
+    shelf:"1"
+  },
+  {
+    block:"B",
+    shelf:"2"
+  },
+  {
+    block:"B",
+    shelf:"3"
+  },
+  {
+    block:"C",
+    shelf:"1"
+  },
+  {
+    block:"C",
+    shelf:"2"
+  },
+  {
+    block:"C",
+    shelf:"3"
+  },
+  {
+    block:"D",
+    shelf:"1"
+  },
+  {
+    block:"D",
+    shelf:"2"
+  },
+  {
+    block:"D",
+    shelf:"3"
+  },
+  {
+    block:"E",
+    shelf:"1"
+  },
+  {
+    block:"E",
+    shelf:"2"
+  },
+  {
+    block:"E",
+    shelf:"3"
+  },
+  {
+    block:"F",
+    shelf:"1"
+  },
+  {
+    block:"F",
+    shelf:"2"
+  },
+  {
+    block:"F",
+    shelf:"3"
+  },
+  {
+    block:"G",
+    shelf:"1"
+  },
+  {
+    block:"G",
+    shelf:"2"
+  },
+  {
+    block:"G",
+    shelf:"3"
+  },
+];
+const createLocation = async () => {
+  const result = await location.insertMany(data);
+  console.log("Insert Location Successfully");
+  return result;
+};
+
+module.exports = {
+  createLocation
+}; 

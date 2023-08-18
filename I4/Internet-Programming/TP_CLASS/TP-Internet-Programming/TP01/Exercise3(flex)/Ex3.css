@@ -1,0 +1,12 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 580px;
+    background-color: rgb(164, 164, 177);
+    margin: auto;
+}
+.flying-box{
+    background-color:rgb(172, 85, 85);
+    align-self: center;
+}

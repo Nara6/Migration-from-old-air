@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    background-color: gray;
+    padding: 3px;
+    text-align: center;
+    color: white;
+    width: fit-content; 
+}
+p{
+    margin: 0px;
+    padding: 0px;
+}
+
+#canvasImg{
+    border: 1px solid black;
+    width: 500px;
+    height: 450px;
+    background-color: white;
+}

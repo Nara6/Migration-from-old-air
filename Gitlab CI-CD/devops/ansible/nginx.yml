@@ -1,0 +1,9 @@
+---
+# create user login bastion
+- hosts: camcyber_bastion
+  gather_facts: no
+  any_errors_fatal: no
+  become: yes
+  debugger: on_failed
+  roles:
+    - nginx

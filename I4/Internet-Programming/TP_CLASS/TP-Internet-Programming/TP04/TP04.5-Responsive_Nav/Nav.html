@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-300 w-full h-[100vh]">
+    <div class="wrapper bg-white w-[98%] m-auto h-auto mt-2 rounded-sm ">
+        <div class="subwrap flex justify-between items-center">
+            <div class="leftnav ml-4 text-[30px] text-sky-900">NAV-BAR</div>
+            <div class="list flex gap-5 text-gray-500 tracking-widest max-[501px]:hidden">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#project">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="rightnav flex gap-4 mr-4 max-[501px]:hidden">
+                <img src="https://img.icons8.com/color/512/facebook-new.png" alt="" class="w-[20px] h-[22px]">
+                <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-twitter-256.png" alt="" class="w-[20px] h-[20px]">
+                <img src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_behance-256.png" alt="" class="w-[20px] h-[20px]">
+                <img src="https://cdn1.iconfinder.com/data/icons/social-networks-15/512/LinkedIn_social_network_logo-512.png" alt="" class="w-[20px] h-[20px]">
+                <img src="https://cdn1.iconfinder.com/data/icons/flat-rounded-icons/48/ico-52-256.png" alt="" class="w-[20px] h-[20px]">
+            </div>
+            <div class="menu hidden max-[501px]:block">
+                <svg id="blue_menu" viewBox="0 0 100 80" width="30" height="30" class="fill-blue-400 mr-4 hover:cursor-pointer" onclick="rotateImage()">
+                    <rect width="100" height="20"></rect>
+                    <rect y="30" width="100" height="20"></rect>
+                    <rect y="60" width="100" height="20"></rect>
+                </svg>
+            </div>
+
+            
+        </div>
+        <div id="list_menu" class="min-[501px]:hidden transition-all duration-[0.5s] ease-out h-0">
+            <ul id="subList" class="min-[501px]:hidden hidden p-4 pt-0 text-gray-500 tracking-widest duration-[0.3s] ease-out">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#project">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function rotateImage(){
+
+            document.getElementById("blue_menu").classList.toggle("fill-black");
+            document.getElementById("blue_menu").classList.toggle("origin-center");
+            document.getElementById("blue_menu").classList.toggle("rotate-90");
+            document.getElementById("list_menu").classList.toggle("h-32");
+            document.getElementById("subList").classList.toggle("hidden");
+            
+            
+        }
+    </script>
+    
+</body>
+</html>

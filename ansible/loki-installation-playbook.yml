@@ -1,0 +1,41 @@
+--- 
+- hosts: grafana
+  tasks:
+    - name: Make directory for loki
+      ansible.builtin.file:
+        path: /opt/loki
+        state: directory
+        mode: '0755' 
+    - name: Wget package
+      ansible.builtin.get_url:
+        url: https://github.com/grafana/loki/releases/download/v2.2.1/loki-linux-amd64.zip
+        dest: /opt/loki
+        mode: '0440'
+    - name: unarchive loki
+      ansible.builtin.unarchive:
+        src: /opt/loki/loki-linux-amd64.zip
+        dest: /opt/loki
+        remote_src: yes
+    - name: Rename loki
+      command: "mv /opt/loki/loki-linux-amd64 /opt/loki/loki"
+    - name: execute permission
+      command: "sudo chmod a+x /opt/loki/loki"
+    - name: create a symbolic link to the loki 
+      command: "sudo ln -s /opt/loki/loki /usr/local/bin/loki"
+    - name: Clone a github repository loki service
+      ansible.builtin.git:
+        repo: https://github.com/Nara6/loki.git
+        dest: /root/loki-service
+        clone: yes
+        update: yes
+    - name: Move loki servie file to file system
+      command: "mv /root/loki-service/loki.service /etc/systemd/system/"
+    - name: Wget package loki configuration file
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/grafana/loki/v2.2.1/cmd/loki/loki-local-config.yaml
+        dest: /opt/loki
+        mode: '0440'
+    - name: Start service loki 
+      command: "sudo service loki start"
+...
+    

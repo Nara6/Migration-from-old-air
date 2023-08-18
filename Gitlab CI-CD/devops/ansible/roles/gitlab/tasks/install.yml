@@ -1,0 +1,38 @@
+---
+#===========================================
+# install gitlab runner on new servers
+# author: glizzy
+#===========================================
+- name: create directory if they don't exist
+  file:
+    path: '/etc/scripts'
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+
+- name: add offial gitlab repository
+  template:
+    src: 'templates/runner-script.j2'
+    dest: '/etc/scripts/runner.sh'
+    mode: 0755
+
+- name: execute runner scripts
+  shell:
+    '/etc/scripts/runner.sh'
+
+- name: update package
+  apt:
+    update_cache: yes
+
+- name: install gitlab runner
+  apt:
+    name: gitlab-runner
+    state: present
+
+- name: restart runner
+  shell:
+    'gitlab-runner start'
+
+
+

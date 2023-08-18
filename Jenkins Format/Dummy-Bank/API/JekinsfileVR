@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+         stage('Deploy') {
+            steps {
+                sh 'ssh -o StrictHostKeyChecking=no sovichea@172.19.24.24 "cd ~/apps/VR/auction-web-admin-v2;\
+                git fetch;\
+                git checkout uat;\
+                git pull;\
+                cd ..;\
+                sudo docker-compose -f web-docker-compose.yml up -d --build;\
+                "'
+            }
+        }
+       
+    }
+    post{
+        success{
+            sh '''
+            sh 1-success-deploy-uat.sh;\
+            '''
+        }
+        failure{
+            sh '''
+            sh 2-fail-deploy-uat.sh;\
+            '''
+
+        }
+    }
+}

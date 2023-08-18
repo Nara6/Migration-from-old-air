@@ -1,0 +1,103 @@
+
+<div  style="width: 700px;" >
+    <div fxLayout="column" fxLayoutAlign="center center" *ngIf=" !isLoading " style="height:100px" >
+        <mat-spinner style="margin:0 auto; " [diameter] = 30   ></mat-spinner> 
+    </div>
+    <ng-container *ngIf = " isLoading">
+
+        <h2 mat-dialog-title>លេខវិក័យប័ត្រ: <b style="color:#04ad04">{{ invoice?.receipt_number }}</b> - ស្ថានភាព: <span [ngStyle]="{'color': invoice?.status?.color}">{{ invoice?.status?.name }}</span></h2>
+        <mat-dialog-content class="mat-typography" >
+          <mat-divider></mat-divider>
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <h3 class="mt-16" style="color:#04ad04">ព័ត៌មាននិស្សិត</h3>
+            </div>
+        
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        
+                <div fxFlex="50" class="pr-4" fxLayout="column">
+                    <mat-form-field appearance="outline">
+                        <mat-label>UID</mat-label>
+                        <input readonly matInput [value]="invoice?.member?.user?.uid">
+                        <mat-icon matSuffix class="secondary-text">code</mat-icon>
+                    </mat-form-field>
+                </div>
+              <div fxFlex="50" class="pr-4" fxLayout="column">
+                  <mat-form-field appearance="outline">
+                      <mat-label>ឈ្មោះ</mat-label>
+                      <input readonly matInput [value]="invoice?.member?.user?.name">
+                      <mat-icon matSuffix class="secondary-text">person</mat-icon>
+                  </mat-form-field>
+              </div>
+        
+              <div fxFlex="50" class="pr-4" fxLayout="column">
+                  <mat-form-field appearance="outline">
+                      <mat-label>លេខទូរស័ព្ទ</mat-label>
+                      <input readonly matInput [value]="invoice?.member?.user?.phone">
+                      <mat-icon matSuffix class="secondary-text">smartphone</mat-icon>
+                  </mat-form-field>
+              </div>
+        
+            </div>
+           
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <h3 class="mt-14" style="color:#04ad04">ការបង់ប្រាក់</h3>
+            </div>
+        
+            <div fxLayout="row" fxLayout.xs="column" class="mb-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <table  class="simple invoice-table">
+                <thead>
+                  <tr>
+        
+                    <th class="title">ឈ្មោះផលិតផល</th>
+                    <th class="title">ចំនួន PV</th>
+                    <th class="text-right">តម្លៃ (USD) </th>
+                  </tr>
+                </thead>
+                <tbody>
+        
+                  <tr>
+        
+                    <td class="title">
+                        {{ invoice?.package?.kh_name }} 
+                    </td>
+                    <td class="text-left">
+                        <br>{{ invoice?.total_pv }}PV
+                    </td>
+                   
+                    <td class="text-right">
+                        <b style="color: #03a9f4;">{{ invoice?.total_price | number }} USD</b> 
+                        
+                    </td>
+                  
+                  </tr>
+        
+                  <tr>
+                    <td class="text-right" colspan=2></td>
+                    <td class="text-right">តំលៃ​​សរុប : <br>
+                       <b>{{ invoice?.total_price | number }} USD</b> </td>
+                  </tr>
+        
+                  
+                </tbody>
+            </table>
+            </div>
+        
+          </div>
+        
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <mat-spinner style="margin:0 auto; " *ngIf=" !payment " [diameter] = 30   ></mat-spinner> 
+
+          <ng-container *ngIf="invoice.status_id == 1 && payment">
+            <button mat-button mat-stroked-button color="accent"   (click) = " action(invoice, 'Accepted')"> <span>បង់ប្រាក់</span>  </button>
+            <button  mat-button mat-stroked-button color="warn"   (click) = " action(invoice, 'Rejected') "><span>បដិសេដ</span></button>
+
+          </ng-container  >
+        
+           <button mat-button [mat-dialog-close]="true" [disabled]=" !payment " cdkFocusInitial>ចាកចេញ</button>
+        </mat-dialog-actions>
+    </ng-container>
+    
+</div>
+

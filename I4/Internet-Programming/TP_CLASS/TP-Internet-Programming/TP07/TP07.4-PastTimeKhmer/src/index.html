@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+    <title>Khmer Past Time</title>
+    <style>
+        .text{
+            font-family: 'Bebas Neue', cursive;
+        }
+        .khmer-text{
+            font-family: 'Dangrek', cursive;
+        }
+
+    </style>
+</head>
+<body class="flex flex-col items-center gap-y-3">
+    <img src="https://img.icons8.com/arcade/256/time-machine.png" alt="">
+    <h1 class="text-[50px] text">Khmer Past Time</h1>
+    <input id="input" type="datetime-local" class="border-2 bg-gray-200 rounded-md p-2">
+    <p class="text-[50px] khmer-text mt-4 text-orange-400" id="date"></p>
+    <script type="module" src="./script/index.js"></script>
+</body>
+</html>

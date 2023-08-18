@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center w-full h-[800px]" onload="color.displayColor()">
+    <div class="container w-[500px] h-[700px] bg-gray-300 border-[5px] border-black flex justify-center items-center">
+        <div class="subcontainer w-[460px] h-[660px] bg-white">
+            <div class="head h-[50px] p-4">
+                <span id="color" class="text-blue-700 text-[17px] font-mono font-bold">Random Color Generator</span>
+            </div>
+            <div id="colorBG" class="color h-[590px] w-full bg-blue-600">
+                    <div class="headBG h-[100px] w-[440px] bg-black flex flex-col items-center justify-center font-serif font-bold m-auto rounded-md">
+                        <span class="text-white text-[35px]">Background Color :</span>
+                        <span id="colorCode" class="text-blue-500 text-[20px]"></span>
+                    </div>
+
+                    <div class="button flex mt-[40px] justify-center gap-3 font-serif font-bold">
+                        <button class="border-2 p-2 rounded-md bg-black text-white border-black tracking-widest" onclick="color.generate()">GENERATE</button>
+                        <button class="border-2 p-2 rounded-md border-black tracking-widest" onclick="color.reset()">RESET</button>
+                    </div>
+                    <div id="listing" class="listing h-auto w-full bg-white mt-3 p-3">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        class Color{
+            colorType = '';
+            record = [];
+            constructor(type){
+                this.colorType = type;
+                this.getRecords();
+            }
+            generate(){
+                var holdNum = this.getRandomNumber();
+                this.record.push(holdNum.toUpperCase());
+                localStorage.setItem("records", JSON.stringify(this.record));
+                this.displayColor();
+            }
+            getRandomNumber(){
+                var randomNumber = Math.floor(Math.random()*16777215).toString(16);
+                return "#"+randomNumber;
+            }
+            getRecords(){
+                this.record = JSON.parse(localStorage.getItem("records"));
+            }
+            reset(){
+                this.record = [];
+                localStorage.setItem("records", JSON.stringify(this.record));
+                this.displayColor();
+            }
+            displayColor(){
+                document.getElementById("colorCode").innerHTML=this.record[this.record.length-1];
+                document.getElementById("color").style.color=this.record[this.record.length-1];
+                document.getElementById("colorCode").style.color=this.record[this.record.length-1];
+                document.getElementById("colorBG").style.backgroundColor=this.record[this.record.length-1];
+                document.getElementById("listing").innerHTML="";
+                // console.log(this.record.length);
+                for(let i=this.record.length-1; i>=0; i--) {
+                    document.getElementById("listing").innerHTML+=`<div style="display: flex;">${this.record[i]}<div style="height:15px; width:15px; border:1px solid black; margin-left: 5px; margin-top: 5px; background-color:${this.record[i]}"></div></div>`;
+                }
+            }
+
+        }
+        // var test=["#2336FB","#497068","#599F96"]
+        // localStorage.setItem("records",JSON.stringify(test));
+        var color = new Color("HEX");
+        // let testing = color.getRandomNumber();
+        // console.log(testing.toUpperCase());
+        // console.log(typeof color.getRandomNumber());
+
+
+    </script>
+</body>
+</html>

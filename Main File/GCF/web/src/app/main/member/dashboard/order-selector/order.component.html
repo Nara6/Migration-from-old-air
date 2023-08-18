@@ -1,0 +1,59 @@
+<div class="content-cnt page-layout blank">
+    <div class="content">
+        <div  class="tab-content p-24" >
+            <!-- <div class="text-right" >
+                <button (click) = " onClose() " mat-mini-fab class=" btn-icon-searching-add " color="warn" ><mat-icon >close</mat-icon></button>
+            </div>
+           -->
+            <div fxLayout="column" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start ">
+              <ng-container >
+                <div class="widget" fxFlex="100" fxFlex.gt-sm="100">
+                    <span class="select-message-text hint-text"><h2>ផលិតផល</h2></span>
+                    <div class="p-16" >
+                        <mat-progress-bar *ngIf=" isLoading" mode="query" color="accent"></mat-progress-bar>
+
+                        <div fxLayout="row wrapper" fxLayoutAlign="start"  >
+                            <div *ngFor="let package of data" fxFlex="100" fxFlex.gt-sm="20" style="padding: 10px; " >
+                                <mat-card   class="example-card" >
+                                   <!-- // <img mat-card-image [src]=" fs.imgSrc(product?.package?.image) " alt=""> -->
+                                 <img mat-card-image style="height: 320px;"  src="assets/image/1.JPG" alt="">
+
+                                    <mat-card-content>
+                                        <p style="font-size:14pt; font-weight: bold; margin-bottom: 0;">{{package?.kh_name}}</p>                                    
+                                        <p style="margin:0">Price: <span style="font-weight: bold;">USD {{ package?.price | number }}</span></p>
+                                        <p style="margin:0"><span style="font-weight: bold;">{{ package?.pv | number}} PV </span></p>
+                                    
+                                    </mat-card-content>
+                                    <mat-card-actions style="text-align-last:center">
+                                        <button color="accent" mat-icon-button (click)="orderPackage(package)">
+                                            <mat-icon class="material-icons">add_shopping_cart</mat-icon>
+                                        </button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                           
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                </ng-container>
+              
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start ">
+              
+                <ng-container >
+                <div class="widget" fxFlex="100" fxFlex.gt-sm="100">
+                  <div class="p-16" >
+                      <mat-progress-bar *ngIf=" isLoading" mode="query" color="accent"></mat-progress-bar>
+                      <span class="select-message-text hint-text"><h2>ផលិតផល</h2></span>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+         </div>
+
+    </div>
+</div>

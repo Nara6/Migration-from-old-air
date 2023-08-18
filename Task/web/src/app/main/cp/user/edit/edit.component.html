@@ -1,0 +1,29 @@
+<div class="content-cnt page-layout blank">
+    <div class="header accent p-24 h-80" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex="50">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">ប្រភេទអាជីព</span>
+
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">កែប្រែ</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="tab-content p-24">
+            <div *ngIf="isLoading">
+                <mat-spinner style="margin: auto" diameter=" 50 "></mat-spinner>
+            </div>
+
+            <div *ngIf="!isLoading">
+                <category-form [data]="data" [action]="'UPDATE'" (emitSetupData)="getData($event)"></category-form>
+            </div>
+
+        </div>
+    </div>
+</div>

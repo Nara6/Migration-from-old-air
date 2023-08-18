@@ -1,0 +1,109 @@
+<!-- ===================== Header =================== -->
+<section class="body-scheme1 ">
+            <div class="resume_item resume_about">
+               <div class="title">
+                  <p class="bold">ព្រះរាជាណាចក្រកម្ពុជា</p>
+               </div>
+               <div class="next">
+                  <p class="bold2">ជាតិ សាសនា ព្រះមហាក្សត្រ</p>
+               </div>
+            </div>
+            
+            <div class="headerLogo">
+               <div class="resume_profile1">
+                  <img src="../../../../assets/images/logo.png" alt="profile_pic">
+                  <div class="title2">
+                     <p class="bold" class="khmermoul">វិទ្យាស្ថានជាតិសុខភាពសាធារណៈ</p>
+                     <p class="bold">សាលាសុខភាពសាធារណៈ</p>
+                  </div>
+               </div>
+               <div class="resume_profile2">
+                  <div class="square">
+                     <ng-container *ngIf="data.general_info.primary_info.image != null">
+                        <img
+                          width="60px"
+                          [src]=" env?.fileUrl + data.general_info.primary_info.image "
+                          style="height: 120px;width: 100px;"
+                          alt=""
+                        />
+                      </ng-container>
+                      <ng-container *ngIf="data.general_info.primary_info.image == null">
+                        <img
+                        
+                          src="assets/images/person-placeholder.jpg"
+                          alt=""
+                        />
+                      </ng-container>
+                  </div>
+               </div>
+            </div>
+
+            <div class="headerLogo">
+               <div class="resume_profile">
+                  <div class="title3">
+                     <p class="bold"><u>ពាក្យសុំចូលរៀន</u></p>
+                     <p class="bold">សូមគោរពជូន</p>
+                     <p class="bold">នាយកវិទ្យាស្ថានជាតិសុខភាពសាធារណៈ</p>
+                     <p class="bold">​តាមរយៈនាយកសាលាសុខភាពសាធារណៈ</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="formFill">
+                <div class="title4">
+                   <p class="bold"><u><span class="bolder">ព័ត៍មានទូទៅ</span></u></p><br>
+                   <p class="bold"><span class="bolder">១-ខ្ញុំបាទ/នាងខ្ញុំឈ្មោះ<span class="hanuman">(name):</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{data?.general_info?.primary_info?.kh_name }}</span>&nbsp;&nbsp;&nbsp;&nbsp;ជាអក្សរឡាតាំង​<span class="hanuman">(in Latin)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{data?.general_info?.primary_info?.en_name }}</span></p>
+                   <p class="bold"><span class="bolder">២-ថ្ងៃ-ខែ-ឆ្នាំកំណើត<span class="hanuman">(Date of Birth):</span></span>&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.primary_info?.dob | date :'dd-MMM-yy'}}</span>&nbsp;&nbsp;សញ្ជាតិ<span class="hanuman">(Nationality)</span>:&nbsp;&nbsp;<span class="loop">{{data?.general_info?.primary_info?.nationality?.kh_name }}</span>&nbsp;&nbsp;ភេទ<span class="hanuman">(SEX)</span>&nbsp;&nbsp;<span class="loop">{{data?.general_info?.primary_info?.sex?.kh_name }}</span></p>
+                   <p class="bold"><span class="bolder">៣-ទីកន្លែងកំណើត<span class="hanuman">(Place of Birth):</span></span>&nbsp;&nbsp;&nbsp;ភូមិ&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.place_of_birth?.pob_village?.kh_name }}</span>&nbsp;&nbsp;&nbsp;ឃំុ/សង្កាត់&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.place_of_birth?.pob_commune?.kh_name }}</span></p>
+                   <p class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ស្រុក/ខណ្ឌ&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.place_of_birth?.pob_district?.kh_name }}</span>&nbsp;&nbsp;ខេត្ត/រាជធានី&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.place_of_birth?.pob_province?.kh_name }}</span></p>
+                   <p class="bold"><span class="bolder">៤-អាសយដ្ឋាន<span class="hanuman">(Current Residence):</span></span>&nbsp;&nbsp;&nbsp;ភូមិ&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.current_address?.current_village?.kh_name }}</span>&nbsp;&nbsp;&nbsp;ឃំុ/សង្កាត់&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.current_address?.current_commune?.kh_name }}</span></p>
+                   <p class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ស្រុក/ខណ្ឌ&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.current_address?.current_district?.kh_name }}</span>&nbsp;&nbsp;ខេត្ត/រាជធានី&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.current_address?.current_province?.kh_name }}</span></p>
+                   <p class="bold"><span class="bolder">៥-ទូរស័ព្ទ<span class="hanuman">(Phone):</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.primary_info?.phone }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;អុីម៉េល<span class="hanuman">(Email):</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.primary_info?.email }}</span></p>
+                   <p class="bold"><span class="bolder">៦-កម្រិតបរិញ្ញាបត្រជាន់ខ្ពស់<span class="hanuman">(Higher Qualification)</span></span>
+                   <p>
+                </div>
+             </div>
+
+             <div class="formFillBox">
+               <div class="box">
+                  <table>
+                     <tr>
+                        <th>
+                           <p>គ្រឹះស្ថានសិក្សា <br><span class="hanuman">(Instutute)</span></p>
+                        </th>
+                        <th>
+                           <p>អាសយដ្ឋាន<br><span class="hanuman">(Address)</span></p>
+                        </th>
+                        <th>
+                           <p>ឆ្នាំបញ្ចប់<br><span class="hanuman">(Ended Year)</span></p>
+                        </th>
+                        <th>
+                           <p>បរិញ្ញាបត្រ<br><span class="hanuman">(​Degree)</span></p>
+                        </th>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hanuman">{{ data?.general_info?.education?.institution }}</span><br><br><br></p>
+                        </td>
+                        <td>
+                           <p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hanuman">{{ data?.general_info?.education?.institution_address }}</span><br><br><br></p>
+                        </td>
+                        <td>
+                           <p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hanuman">{{ data?.general_info?.education?.institution_ended_year }} </span><br><br><br></p>
+                        </td>
+                        <td>
+                           <p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hanuman">{{ data?.general_info?.education?.institution_degree }}</span><br><br><br></p>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+
+            <div class="formFill">
+               <div class="title4">
+                  <p class="bold"><span class="bolder">៧-មុខរបរបច្ចុប្បន្ន<span class="hanuman">(Current Occupation):</span></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.occupation?.occupation }}</span></p>
+                  <p class="bold"><span class="bolder">៨-កន្លែងធ្វើការ និងតួនាទីបច្ចុប្បន្ន<span class="hanuman">(Current working place and position):</span></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.occupation?.working_place }};</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.occupation?.position }}</span></p>
+                  <p class="bold"><span class="bolder">៩-បទពិសោធការងាបច្ចុប្បន្ន​សង្ខេប<span class="hanuman">(Current Working Experience):</span></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="loop">{{ data?.general_info?.occupation?.working_experience }}</span></p>
+               </div>
+            </div>
+</section>

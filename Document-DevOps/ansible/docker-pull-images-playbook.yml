@@ -1,0 +1,7 @@
+--- 
+- hosts: grafana
+  tasks: 
+    - name: pull an image
+      command: "docker pull nginx"
+    - name: Run images as container
+      command: "docker run -d --name nginx -p 1001:80 nginx"

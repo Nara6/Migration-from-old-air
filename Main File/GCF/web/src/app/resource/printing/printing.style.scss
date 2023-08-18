@@ -1,0 +1,285 @@
+  // @import url('https://fonts.googleapis.com/css2?family=Moulpali&display=swap');
+  // @import url('https://fonts.googleapis.com/css2?family=Freehand&display=swap');
+  // @import url('https://fonts.googleapis.com/css2?family=Hanuman&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Hanuman&family=Moulpali&family=Freehand&display=swap');
+
+.print-application-form{
+  
+ .application-form {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  @media print {
+    background: unset;
+    margin: -45px;
+    #application{
+      border: 0px solid ;
+    }
+  }
+   
+  #application {
+    border: 0px solid grey
+ }
+ .loop{
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Hanuman' !important;
+  line-height: 23px;
+  text-align: center;
+  color: #000000;
+ }
+  .bolder{
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Freehand' !important;
+    line-height: 10px;
+    text-align: center;
+    color: #000000;
+  }
+  .hanuman{
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Hanuman' !important;
+    line-height: 10px;
+    color: #000000;
+  }
+  * {
+      box-sizing: content-box;
+    }
+
+    .bolder {
+      font-weight: 700;
+      font-size: 16px;
+      font-family: "Freehand", cursive;
+      line-height: 10px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .hanuman {
+      font-weight: 500;
+      font-size: 14px;
+      font-family: "Hanuman", cursive;
+      line-height: 10px;
+      color: #000000;
+    }
+
+    // * {
+    //   box-sizing: content-box;
+    // }
+
+    .book {
+      .page {
+        width: 21cm;
+        min-height: 35px;
+        margin: 0.3cm auto;
+        background: white;
+        .headerLogo {
+          display: flex;
+          /* border: 3px solid black; */
+          height: 150px;
+          justify-content: space-around;
+          justify-items: flex-start;
+          .resume_profile {
+            margin-top: -6px;
+            color: #039;
+            text-align: center;
+            line-height: 5px;
+          }
+          .resume_profile1 {
+            margin-top: -20px;
+            margin-left: -180px;
+            color: #039;
+            text-align: center;
+            line-height: 5px;
+            img {
+              width: 115px;
+            }
+          }
+          .resume_profile2 {
+            margin-top: -13px;
+            margin-right: -110px;
+            color: #039;
+            text-align: center;
+            line-height: 5px;
+          }
+          .title2 {
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Moulpali' !important;
+            line-height: 10px;
+            color: #000000;
+          }
+          .title3 {
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Moulpali' !important;
+            line-height: 10px;
+            color: #000000;
+          }
+          .square {
+            font-family: 'Moulpali' !important;
+            height: 150px;
+            width: 150px;
+            order: 2;
+            position: relative;
+            top: 30px;
+            left: 32px;
+            font-size: 1.25em;
+            p {
+              font-family: 'Moulpali' !important;
+              font-size: 15px;
+              color: black;
+            }
+          }
+        }
+        .resume_right {
+          .title {
+            padding: 3px;
+            font-weight: 700;
+            font-size: 20px;
+            font-family: 'Moulpali' !important;
+            line-height: 10px;
+            text-align: center;
+            color: #000000;
+          }
+          .next {
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Moulpali' !important;
+            line-height: 0px;
+            text-align: center;
+            color: #000000;
+          }
+        }
+        .formFill {
+          display: flex;
+          /* border: 3px solid black; */
+          // height: 200px;
+          justify-content: space-between;
+          justify-items: flex-start;
+          padding: 20px 20px 0px 20px;
+          .title4 {
+            text-align: left;
+            font-weight: 500;
+            font-size: 16px;
+            font-family: 'Freehand' !important;
+            line-height: 15px;
+            color: #000000;
+          }
+        }
+        .formFill_line {
+          display: flex;
+          /* border: 3px solid black; */
+          height: 18px;
+          justify-content: space-between;
+          justify-items: flex-start;
+          padding: 20px;
+          .text {
+            display: flex;
+            font-weight: 500;
+            font-size: 16px;
+            font-family: 'Freehand' !important;
+            line-height: 10px;
+            color: #000000;
+          }
+        }
+        .formFillBox {
+          display: flex;
+          /* border: 3px solid black; */
+          height: 260;
+          justify-content: space-between;
+          justify-items: flex-start;
+          padding: 0px;
+          .box,
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          td,
+          th {
+            border: 1px solid black;
+            font-size: 16px;
+            font-family: 'Freehand' !important;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    
+    // ===============================================================================>> Choose Major
+
+    .page1 {
+      width: 21cm;
+        min-height: 35px; 
+        margin: 0.3cm auto;
+        background: white;
+      .formFill_2 {
+        display: flex;
+        /* border: 3px solid black; */
+        height: 1000px;
+        justify-content: space-between;
+        justify-items: flex-start;
+        padding: 0px 20px 0px 20px;
+        .title_2 {
+          text-align: left;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: 'Freehand' !important;
+          line-height: 28px;
+          color: #000000;
+          .bullet {
+            font-weight: 500;
+            font-size: 16px;
+            font-family: 'Freehand' !important;
+            line-height: 10px;
+            color: #000000;
+          }
+        }
+      }
+      .formFill_3 {
+        display: flex;
+        /* border: 3px solid black; */
+        height: 800px;
+        justify-content: space-between;
+        justify-items: flex-start;
+        padding: 150px 0px 0px 21px;
+        margin-top: 50px;
+        .title_2 {
+          text-align: left;
+          font-weight: 500;
+          font-size: 16px;
+          font-family: 'Freehand' !important;
+          line-height: 23px;
+          color: #000000;
+        }
+      }
+      .formFill_line {
+        display: flex;
+        /* border: 3px solid black; */
+        height: 18px;
+        justify-content: space-between;
+        justify-items: flex-start;
+        padding: 20px;
+        font-weight: 700;
+        font-size: 10px;
+        font-family: 'Freehand' !important;
+        line-height: 10px;
+        color: #000000;
+      }
+      .formSign {
+        display: flex;
+        /* border: 3px solid black; */
+        height: 40px;
+        justify-content: space-between;
+        justify-items: flex-end;
+        font-weight: 500;
+        font-size: 16px;
+        font-family: 'Freehand' !important;
+        line-height: 30px;
+        color: #000000;
+      }
+    } 
+ }
+}

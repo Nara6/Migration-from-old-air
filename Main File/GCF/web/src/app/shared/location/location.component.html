@@ -1,0 +1,70 @@
+
+<form fxLayout="row"  fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="form" >
+
+    <mat-form-field appearance="outline" fxFlex="" style="width: 50%;">
+        <mat-label>ជ្រើសរើសរាជធានី/ខេត្ត </mat-label>
+        <mat-select  formControlName="province" (selectionChange)=" districtFilter($event)" >
+            <mat-option  *ngFor="  let row of provinces " [value]=" row?.id " >
+                {{row?.kh_name}}
+            </mat-option>
+        </mat-select>
+        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+        <mat-error>
+            <span *ngIf="form.get('province').hasError('')">
+            សូមជ្រើសរើសរាជធានី/ខេត្ត
+        </span>
+            <span *ngIf="form.get('province').hasError('servererror')">{{ form.get('province').errors.servererror }}</span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="" class="px-8" style="width: 50%;">
+        <mat-label>ជ្រើសរើសក្រុង/ស្រុក/ខណ្ឌ</mat-label>
+        <mat-select  style="width: 100%;" formControlName="district" (selectionChange)=" communeFilter($event)" >
+            <mat-option *ngFor="  let row of districts " [value]=" row?.id ">
+                {{ row?.kh_name }}
+            </mat-option>
+
+        </mat-select>
+        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+        <mat-error>
+            <span *ngIf="form.get('district').hasError('')">
+            សូមជ្រើសរើសក្រុង/ស្រុក/ខណ្ឌ
+        </span>
+            
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="" class="px-8" style="width: 50%;">
+        <mat-label>ជ្រើសរើសឃុំ/សង្កាត់</mat-label>
+        <mat-select  formControlName="commune" (selectionChange)=" villageFilter($event) " >
+            <mat-option *ngFor="  let row of communes " [value]=" row?.id ">
+                {{ row?.kh_name }}
+            </mat-option>
+        </mat-select>
+        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+        <mat-error>
+            <span *ngIf="form.get('commune').hasError('')">
+            សូមជ្រើសរើសឃុំ/សង្កាត់
+        </span>
+            
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="" style="width: 50%;">
+        <mat-label>ភូមិ</mat-label>
+        <mat-select formControlName="village" >
+            <mat-option *ngFor="  let row of villages " [value]=" row?.id ">
+                {{ row?.kh_name }}
+            </mat-option>
+
+        </mat-select>
+        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+        <mat-error>
+            <span *ngIf="form.get('village').hasError('')">
+            សូមជ្រើសរើសភូមិ
+        </span>
+            
+        </mat-error>
+    </mat-form-field>
+
+ </form>

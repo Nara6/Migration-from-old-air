@@ -1,0 +1,18 @@
+---
+group_users:
+  - {name: 'devops'}
+  - {name: 'developer'}
+
+users: 
+  - name: nara
+    password: $6$lvj1QPN/wjLG3iL$P9BUwzGm5mJuoq3hurO31EG3PF.A.DIj9ditGlzyvhVE4zOztVKQS2xla0ePq0kvp67h1CKbefshomQHdIc2y1
+    type: devops
+  # - name: pisey
+  #   password: $6$lvj1QPN/wjLG3iL$P9BUwzGm5mJuoq3hurO31EG3PF.A.DIj9ditGlzyvhVE4zOztVKQS2xla0ePq0kvp67h1CKbefshomQHdIc2y1
+  #   type: devops
+  # - name: reak
+  #   password: $6$lvj1QPN/wjLG3iL$P9BUwzGm5mJuoq3hurO31EG3PF.A.DIj9ditGlzyvhVE4zOztVKQS2xla0ePq0kvp67h1CKbefshomQHdIc2y1
+  #   type: devops
+  # - name: vichea
+  #   password: $6$lvj1QPN/wjLG3iL$P9BUwzGm5mJuoq3hurO31EG3PF.A.DIj9ditGlzyvhVE4zOztVKQS2xla0ePq0kvp67h1CKbefshomQHdIc2y1
+  #   type: devops

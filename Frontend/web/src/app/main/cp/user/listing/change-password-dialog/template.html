@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>ផ្លាស់ប្តូរពាក្យសម្ងាត់</h2>
+<mat-dialog-content class="mat-typography" style="width: 700px;">
+    <form  fxLayout="column" fxFlex="1 0 auto" [formGroup]="changePasswordform">
+        <mat-form-field appearance="outline">
+            <mat-label>ពាក្យសម្ងាត់</mat-label>
+            <input matInput formControlName="password" required>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            <mat-error>
+                <span *ngIf="changePasswordform.get('password').hasError('required')">សូម​បញ្ចូល​ពាក្យ​សម្ងាត់​របស់​អ្នក.</span>
+                <span *ngIf="changePasswordform.get('password').hasError('minlength')">ប្រវែងពាក្យសម្ងាត់របស់អ្នកត្រូវមានយ៉ាងហោចណាស់ ៦ ខ្ទង់.</span>
+                <span *ngIf="changePasswordform.get('password').hasError('maxlength')">លេខសម្ងាត់របស់អ្នកមិនអាចបញ្ចូលច្រើនជាង ២០ ខ្ទង់ទេ.</span>
+                <span *ngIf="changePasswordform.get('password').hasError('servererror')">{{ changePasswordform.get('password').errors.servererror }}</span>
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button [disabled]="!changePasswordform.valid || isLoading" color="accent" (click) = " submit() " cdkFocusInitial>
+        <mat-spinner style="margin:0 auto; " [diameter] = 30  *ngIf = " isLoading "  ></mat-spinner> <span *ngIf = " !isLoading " >ផ្លាស់ប្តូរ</span>
+    </button>
+    <button mat-button mat-dialog-close>ចាកចេញ</button>
+  </mat-dialog-actions>
+
+  

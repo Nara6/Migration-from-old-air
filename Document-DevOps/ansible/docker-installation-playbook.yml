@@ -1,0 +1,23 @@
+---
+- hosts: grafana
+  tasks:
+    # - name: Update apt
+    #   apt:
+    #     update_cache: yes
+    - name: curl
+      command: sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: add repositories
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+...
+  

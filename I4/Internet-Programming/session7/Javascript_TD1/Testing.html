@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000px" height="1000px" id="canvas-container"></canvas>
+    <script>
+      // Get the canvas object reference
+      const canvas = document.getElementById("canvas-container");
+      let ctx = canvas.getContext("2d");
+
+      // Question 1: Create 3 variables which represent green, yello, red brick
+      const greenBrick = {
+        backgroundColor: "#009E0F",
+        borderColor: "black",
+        width: 50,
+        height: 20,
+        draw: (x, y) => {
+          // This is to choose background color and border color
+          ctx.fillStyle = greenBrick.backgroundColor;
+          ctx.strokeStyle = greenBrick.borderColor;
+          // This is where you draw your shape
+          ctx.fillRect(x, y, greenBrick.width, greenBrick.height);
+          ctx.strokeRect(x, y, greenBrick.width, greenBrick.height);
+        },
+      };
+      const yelloBrick = {
+        backgroundColor: "#FF9900",
+        borderColor: "blue",
+        width: 50,
+        height: 50,
+        draw: (x, y) => {
+          ctx.fillStyle = yelloBrick.backgroundColor;
+          ctx.strokeStyle = yelloBrick.borderColor;
+          ctx.fillRect(x, y, yelloBrick.width, yelloBrick.height);
+          ctx.strokeRect(x, y, yelloBrick.width, yelloBrick.height);
+        },
+      };
+      const redBrick = {
+        backgroundColor: "#990000",
+        borderColor: "#9900FF",
+        width: 20,
+        height: 50,
+        draw: (x, y) => {
+          ctx.fillStyle = redBrick.backgroundColor;
+          ctx.strokeStyle = redBrick.borderColor;
+          ctx.fillRect(x, y, redBrick.width, redBrick.height);
+          ctx.strokeRect(x, y, redBrick.width, redBrick.height);
+        },
+      };
+
+      // So here are my functions
+      function createWall(width, height, brick) {
+        // write your logic to create a wall
+        // for (let currentXPosition=0; i<=width; currentXPosition=brick.width)
+        let currentXPosition = 0;
+        let index = 1;
+
+        while (currentXPosition < width) {
+          let indexY = 1;
+          let currentYPosition = 0;
+          while (currentYPosition < height) {
+            const x = currentXPosition;
+            const y = currentYPosition;
+            brick.draw(x, y);
+            currentYPosition = brick.height * indexY;
+            indexY++;
+          }
+
+          currentXPosition = brick.width * index;
+          index++;
+        }
+      }
+
+      createWall(300, 200, yelloBrick);
+      createWall(200, 100, greenBrick);
+      createWall(100, 100, redBrick);
+      // greenBrick.draw();
+      // yelloBrick.draw();
+      // redBrick.draw();
+    </script>
+</body>
+</html>

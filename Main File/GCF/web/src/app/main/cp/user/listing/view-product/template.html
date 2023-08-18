@@ -1,0 +1,67 @@
+<div class="content-cnt page-layout blank" [style.width]=" '600px' ">
+
+  <div class="tab-content p-18">
+   <div> <h1 mat-dialog-title class="p-2">ឈ្មោះកញ្ចប់ : {{ data?.package?.name }}</h1>
+      <!-- <div fxLayoutAlign="end end " class="mb-12  ml-12" >
+        <button
+          class="button-action"
+          color="accent"
+          (click)="addRoles()"
+          matTooltip="បង្កើតថ្មី"
+          mat-icon-button
+        >
+        <mat-icon class="mat-icon cursor-pointer">add</mat-icon>
+        </button> &nbsp;
+      </div>  -->
+      
+  </div> 
+   
+    <section class="listing">
+      <table class="custom-table">
+        <!-- n_of_product -->
+        <thead>
+          <tr>
+            <th>លរ.​​​</th>
+            <th>ឈ្មោះផលិតផល</th>
+            <th>តម្លៃ</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of data?.product; let i = index; "[attr.data-index]="i" >
+            <td>{{i + 1}}</td>
+            <td>{{row?.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div fxLayoutAlign="center center">
+        <tr *ngIf=" data?.n_of_product == 0 " class="text-center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-icon
+              role="img"
+              class="
+                mat-icon
+                notranslate
+                s-100
+                mb-16
+                select-message-icon
+                hint-text
+                material-icons
+                mat-icon-no-color
+              "
+              aria-hidden="true"
+            >
+              toc
+            </mat-icon>
+            <span class="select-message-text hint-text"
+              ><span>គ្មានទន្និន័យ</span></span
+            >
+          </div>
+        </tr>
+      </div>
+    </section>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button [disabled] = " isSaving " [mat-dialog-close]=" dataHasChanged "  cdkFocusInitial>បិទ</button>
+</mat-dialog-actions>

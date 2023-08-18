@@ -1,0 +1,207 @@
+<div class="container-fluid" fxLayout="row">
+
+<form
+  class="p-24"
+  fxLayout="column"
+  fxFlex="1 0 auto"
+  name="form"
+  [formGroup]="form"
+  (submit)=" submit() "
+>
+<div fxFlex="100" class="mt-16">
+
+  <div class="title-cnt pl-4">
+    <h3>I. ព័ត៌មានReferral</h3>
+  </div> 
+</div>
+
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>UID</mat-label>
+        <input  matInput formControlName="uid" readonly />
+      <!-- //  <mat-icon matSuffix class="secondary-text">code</mat-icon> -->
+        
+      </mat-form-field>
+
+    </div>
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>តំណែង</mat-label>
+        <input  matInput formControlName="rank_referral" readonly />
+        <!-- <mat-icon matSuffix class="secondary-text">code</mat-icon> -->
+      </mat-form-field>
+
+    </div>
+    
+  </div>
+  <div fxLayout="row">
+  
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>ឈ្មោះ</mat-label>
+        <input matInput formControlName="name_referral" readonly />
+        <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+      </mat-form-field>
+
+    </div>
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>លេខទូរស័ព្ទ</mat-label>
+        <input matInput formControlName="phone_refferral" readonly />
+        <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+        
+      </mat-form-field>
+
+    </div>
+  </div>
+ 
+  <div fxFlex="100" class="mt-16">
+
+    <div class="title-cnt pl-4">
+      <h3>II. ព័ត៌មានសមាជិក</h3>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="50">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>តំណែង</mat-label>
+        <input  matInput formControlName="rank" readonly />
+      </mat-form-field>
+
+    </div>
+
+ 
+  </div>
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>UID</mat-label>
+        <input  matInput formControlName="uid" readonly />
+        <!-- <mat-icon matSuffix class="secondary-text">code</mat-icon> -->
+        
+      </mat-form-field>
+
+    </div>
+
+    <div fxLayout="column" fxFlex="80">
+      <mat-form-field  fxFlex="50" class="pr-8">
+        <mat-label>ឈ្មោះ</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+        <mat-error>
+          <span *ngIf="form.get('name').hasError('required')"
+            >Please enter your name</span
+          >
+          <span *ngIf="form.get('name').hasError('servererror')"
+            >{{ form.get('name').errors.servererror }}</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <div fxLayout="row" class="pt-16">
+    <mat-form-field appearance="outline" fxFlex="50" class="pr-8">
+      <mat-label>អ៊ុីមែល</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-icon matSuffix class="secondary-text">email</mat-icon>
+      <mat-error>
+        <span *ngIf="form.get('email').hasError('required')"
+          >Please enter your email
+        </span>
+        <span *ngIf="form.get('email').hasError('email')"
+          >Email must be a valid email address, for example:
+          bopisey1@gmail.com</span
+        >
+        <span *ngIf="form.get('email').hasError('servererror')"
+          >{{ form.get('email').errors.servererror }}</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50" appearance="outline" class="pr-8">
+      <mat-label>លេខទូរស័ព្ទ</mat-label>
+      <input matInput formControlName="phone" required/>
+      <mat-icon matSuffix class="secondary-text">smartphone</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex="100" appearance="outline">
+      <mat-label>អាសយដ្ឋាន</mat-label>
+      <input matInput formControlName="address" />
+      <mat-icon matSuffix class="secondary-text">place</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-progress-bar *ngIf="isLoading" mode="buffer"></mat-progress-bar>
+  
+  <div fxLayout="row" fxLayoutAlign="end center" class="pt-8">
+    
+    <button [disabled]="isLoading" mat-raised-button color="accent">
+      <mat-spinner [diameter] = 30  *ngIf = " isLoading "  ></mat-spinner>
+
+      <mat-icon class="material-icons">save</mat-icon>&nbsp;ធ្វើបច្ចុប្បន្នភាព
+    </button>
+  </div>
+</form>
+</div>
+<div class="container-fluid" fxLayout="row">
+
+<form
+  class="p-24"
+  fxLayout="column"
+  fxFlex="1 0 auto"
+  name="changePasswordForm"  [formGroup]="changePasswordForm" 
+>
+<div fxFlex="100" class="mt-16">
+
+  <div class="title-cnt pl-4">
+    <h3>III. ផ្លាស់ប្តូរពាក្យសម្ងាត់</h3>
+</div></div>
+  <div fxLayout="row">
+  
+
+  <div fxFlex="50" class="pr-4" fxLayout="column">
+
+      <mat-form-field appearance="outline">
+          <mat-label>ពាក្យសម្ងាត់​ថ្មី</mat-label>
+          <input matInput formControlName="password" name="password"  [type]="hidePassword ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ !hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error>
+              <span *ngIf="changePasswordForm.get('password').hasError('required')">Please enter your new password</span>  
+              <span *ngIf="changePasswordForm.get('password').hasError('minlength')">Password must be at least 6 digits long.</span>
+              <span *ngIf="changePasswordForm.get('password').hasError('maxlength')">Password must be a maximum of 20 digits</span>
+              <span *ngIf="changePasswordForm.get('password').hasError('servererror')">{{ changePasswordForm.get('password').errors.servererror }}</span>
+          </mat-error> 
+      </mat-form-field>
+  </div>
+
+  <div fxFlex="50" class="pr-4" fxLayout="column">
+
+  <mat-form-field appearance="outline">
+      <mat-label> ពាក្យសម្ងាត់ថ្មីម្តងទៀត</mat-label>
+      <input matInput formControlName="confirm_password" name="password"  [type]="hideConfirmPassword ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{ !hideConfirmPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error>
+          <span *ngIf="changePasswordForm.get('confirm_password').hasError('required')">Please confirm your new password again.</span>  
+          <span *ngIf="changePasswordForm.get('confirm_password').hasError('minlength')">Password must be at least 6 digits long.</span>
+          <span *ngIf="changePasswordForm.get('confirm_password').hasError('maxlength')">Password must be a maximum of 20 digits</span>
+          <span *ngIf="changePasswordForm.get('confirm_password').hasError('servererror')">{{ changePasswordForm.get('confirm_password').errors.servererror }}</span>
+      </mat-error> 
+  </mat-form-field>
+  </div>      
+  </div>
+  <mat-dialog-actions align="end">
+      <mat-spinner [diameter] = 30  *ngIf = " isLoadingPassword "  ></mat-spinner>
+      <button *ngIf = " !isLoadingPassword " mat-raised-button  color="accent"  (click)="changePassword(data)"><mat-icon aria-hidden="false">vpn_key</mat-icon>ផ្លាស់ប្តូរពាក្យសម្ងាត់</button>
+  </mat-dialog-actions> 
+  
+  <mat-progress-bar *ngIf="isLoading" mode="buffer"></mat-progress-bar>
+
+</form>
+
+
+</div>

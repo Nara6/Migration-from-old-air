@@ -1,0 +1,11 @@
+ID	Name	Gender	Type	PhoneNumber
+1	Nara	M		VIP     012345
+2	Meow	F		Guest	098721
+3	Chin	M		Guest	098833
+4	Nith	M		Normal	098331
+5	Meng	M		VIP	    022312
+6	Nunn	M		Normal	029233
+7	Nyny	F		VIP	    029333
+8	Zaza	F		Normal	012923
+9	Sysy	F		Guest	099921
+10	Mith	M		Guest	083321
